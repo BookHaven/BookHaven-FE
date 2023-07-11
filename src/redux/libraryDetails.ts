@@ -1,7 +1,7 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchLibraries = createAsyncThunk("libraryIndex/fetchLibraries", () => {
+export const fetchBooks = createAsyncThunk("libraryDetails/fetchBooks", () => {
     return axios
         .get("https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/1/books")
         .then(response => response.data)
@@ -29,29 +29,29 @@ interface Book {
 
 const initialState: InitialState = {
     loading: false, 
-    libraries: [], 
+    books: [], 
     error: ""
 }
 
-export const libraryIndexSlice = createSlice({
-    name: "libraryIndex",
+export const libraryDetailsSlice = createSlice({
+    name: "libraryDetails",
     initialState,
     reducers: {},
     extraReducers: builder => {
-        builder.addCase(fetchLibraries.pending, (state) => {
+        builder.addCase(fetchBooks.pending, (state) => {
             state.loading = true;
         })
-        builder.addCase(fetchLibraries.fulfilled, (state, action: PayloadAction<Library[]>) => {
+        builder.addCase(fetchBooks.fulfilled, (state, action: PayloadAction<Book[]>) => {
                 state.loading = false;
-                state.libraries = action.payload;
+                state.books = action.payload;
                 state.error= "";
         })
-        builder.addCase(fetchLibraries.rejected, (state, action) => {
+        builder.addCase(fetchBooks.rejected, (state, action) => {
             state.loading = false;
-            state.libraries = [];
+            state.books = [];
             state.error = action.error.message || "Error: Unable to fetch data";
         })
     }
 })
 
-export default libraryIndexSlice.reducer
+export default libraryDetailsSlice.reducer
