@@ -42,9 +42,9 @@ export const libraryDetailsSlice = createSlice({
             state.loading = true;
         })
         builder.addCase(fetchBooks.fulfilled, (state, action: PayloadAction<Book[]>) => {
-                state.loading = false;
-                state.books = action.payload;
-                state.error= "";
+            state.loading = false;
+            state.books = action.payload;
+            state.error= "";
         })
         builder.addCase(fetchBooks.rejected, (state, action) => {
             state.loading = false;
