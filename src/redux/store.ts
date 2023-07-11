@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import libraryIndexReducer from "./libraryIndex";
-import libraryDetailsReducer from "./libraryDetails";
+import libraryDetailsReducer, { addBook, removeBook } from "./libraryDetails";
 
 export const store = configureStore({
     reducer: {
