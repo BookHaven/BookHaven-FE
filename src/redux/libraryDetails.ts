@@ -1,5 +1,6 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { RootState } from "./store";
 
 export const fetchBooks = createAsyncThunk("libraryDetails/fetchBooks", () => {
     return axios
@@ -36,7 +37,14 @@ const initialState: InitialState = {
 export const libraryDetailsSlice = createSlice({
     name: "libraryDetails",
     initialState,
-    reducers: {},
+    reducers: {
+        addBook: (state, action: PayloadAction<Book>) => {
+            state.books.push(action.payload);
+        },
+        removeBook: (state, action: PayloadAction<number>) => {
+            state.books = state.books.filter((book) => book.id !== action.payload);
+        },
+    },
     extraReducers: builder => {
         builder.addCase(fetchBooks.pending, (state) => {
             state.loading = true;
@@ -54,4 +62,7 @@ export const libraryDetailsSlice = createSlice({
     }
 })
 
-export default libraryDetailsSlice.reducer
+export default libraryDetailsSlice.reducer;
+export const { addBook, removeBook } = libraryDetailsSlice.actions;
+export const selectLibraryDetails = (state: RootState) =>
+  state.libraryDetails;
