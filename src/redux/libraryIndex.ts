@@ -7,7 +7,13 @@ export const fetchLibraries = createAsyncThunk("libraryIndex/fetchLibraries", ()
         .then(response => response.data)
 })
 
-const initialState = {
+interface InitialState {
+    loading: boolean,
+    libraries: [], 
+    error: string
+}
+
+const initialState: InitialState = {
     loading: false, 
     libraries: [], 
     error: ""
