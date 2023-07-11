@@ -14,7 +14,21 @@ interface InitialState {
 }
 
 interface Library {
-    id: number
+    id: number, 
+    type: string, 
+    attributes: {
+        name: string, 
+        address: {
+            street: string, 
+            city: string, 
+            state: string
+        }
+        location: {
+            latitude: number, 
+            longitude: number
+        }
+        book_count: number, 
+    }
 }
 
 const initialState: InitialState = {
@@ -29,17 +43,17 @@ export const libraryIndexSlice = createSlice({
     reducers: {},
     extraReducers: builder => {
         builder.addCase(fetchLibraries.pending, (state) => {
-            state.loading = true
+            state.loading = true;
         })
         builder.addCase(fetchLibraries.fulfilled, (state, action: PayloadAction<Library[]>) => {
-            state.loading = false,
-            state.libraries = action.payload, 
-            state.error= ""
+                state.loading = false;
+                state.libraries = action.payload;
+                state.error= "";
         })
         builder.addCase(fetchLibraries.rejected, (state, action) => {
-            state.loading = false, 
-            state.libraries = [], 
-            state.error = action.error.message || "Error: Unable to fetch data"
+            state.loading = false;
+            state.libraries = [];
+            state.error = action.error.message || "Error: Unable to fetch data";
         })
     }
 })
