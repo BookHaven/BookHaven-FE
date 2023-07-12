@@ -4,7 +4,7 @@ import { RootState } from "./store";
 
 export const fetchBooks = createAsyncThunk("libraryDetails/fetchBooks", () => {
     return axios
-        .get("https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/1/books")
+        .get("https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/")
         .then(response => response.data)
 })
 
@@ -28,6 +28,10 @@ interface Book {
    }
 }
 
+interface LibraryDetailsResponse {
+    data: Book[]
+}
+
 const initialState: InitialState = {
     loading: false, 
     books: [], 
@@ -49,9 +53,9 @@ export const libraryDetailsSlice = createSlice({
         builder.addCase(fetchBooks.pending, (state) => {
             state.loading = true;
         })
-        builder.addCase(fetchBooks.fulfilled, (state, action: PayloadAction<Book[]>) => {
+        builder.addCase(fetchBooks.fulfilled, (state, action: PayloadAction<LibraryDetailsResponse>) => {
             state.loading = false;
-            state.books = action.payload;
+            state.books = action.payload.data;
             state.error= "";
         })
         builder.addCase(fetchBooks.rejected, (state, action) => {
