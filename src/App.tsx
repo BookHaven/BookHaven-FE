@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
-import { LibraryIndexView, LibraryDetailsView } from './react-components/libraryIndexView';
+import { LibraryIndexView } from './react-components/libraryIndexView';
+import { LibraryDetailsView } from './react-components/libraryDetailsView';
 
 function App() {
   return (
