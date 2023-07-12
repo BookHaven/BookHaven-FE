@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../redux/store';
 import { fetchBooks } from '../redux/libraryDetails';
+import { Link } from 'react-router-dom';
 
 export const LibraryDetailsView = (id: number) => {
   const libraryDetails = useAppSelector(state => state.libraryDetails);
@@ -12,6 +13,10 @@ export const LibraryDetailsView = (id: number) => {
   }
 
   const library = getLibrary();
+
+  const handleClick = () => {
+
+  }
 
   useEffect(() => {
     dispatch(fetchBooks())
@@ -28,7 +33,9 @@ export const LibraryDetailsView = (id: number) => {
             <p>{library.attributes.address.street}</p>
             <p>{library.attributes.address.city}, {library.attributes.address.state} {library.attributes.address.zip}</p>
             <p>{library.attributes.book_count} Books</p>
-            <button className="addBookBtn">Add a Book</button>
+            <Link to="/form">
+                <button className="addBookBtn" onClick={handleClick}>Add a Book</button>
+            </Link>
             <ul> 
                 {libraryDetails.books.map(book=> (
                 <li key={book.id}>{book.attributes.book_image}</li>
