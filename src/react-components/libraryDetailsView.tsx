@@ -17,13 +17,11 @@ export const LibraryDetailsView = () => {
       {!libraryDetails.loading && libraryDetails.error ? <div>Error: {libraryDetails.error}</div> : null}
       {!libraryDetails.loading && libraryDetails.books.length ? (
         <ul>
-          {
-            libraryDetails.books.map(book=> (
-            //   <li key={library.id}>{library.attributes.name}</li>
-            ))
-          }
+          {libraryDetails.books.map(book=> (
+              <li key={book.id}>{book.attributes.book_image}</li>
+            ))}
         </ul>
-      ) : null} 
+        ) : null} 
     </div>
   )
 }
