@@ -6,7 +6,7 @@ import { LibraryDetailsView } from './react-components/libraryDetailsView';
 function App() {
   return (
     <div className="App">
-      <h1>Book Haven</h1>
+      <h1 className="header">Book Haven</h1>
       <LibraryIndexView />
       <LibraryDetailsView />
     </div>
