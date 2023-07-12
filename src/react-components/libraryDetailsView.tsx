@@ -11,27 +11,31 @@ export const LibraryDetailsView = (id: number) => {
     return libraryIndex.libraries.find(library => library.id === id);
   }
 
+  const library = getLibrary();
+
   useEffect(() => {
     dispatch(fetchBooks())
   }, [])
-
-  const library = getLibrary();
 
   return (
     <div>
       <h2></h2>
       {libraryDetails.loading && <div>Loading...</div>}
       {!libraryDetails.loading && libraryDetails.error ? <div>Error: {libraryDetails.error}</div> : null}
-      {!libraryDetails.loading && libraryDetails.books.length ? (
+      {library && !libraryDetails.loading && libraryDetails.books.length ? (
         <div className="libraryDetailsPage">
-            <h1>{library ? library.attributes.name : "Library Not Found"}</h1>
-            <ul>
+            <h1>{library.attributes.name}</h1>
+            <p>{library.attributes.address.street}</p>
+            <p>{library.attributes.address.city}, {library.attributes.address.state} {library.attributes.address.zip}</p>
+            <p>{library.attributes.book_count} Books</p>
+            <button className="addBookBtn">Add a Book</button>
+            <ul> 
                 {libraryDetails.books.map(book=> (
                 <li key={book.id}>{book.attributes.book_image}</li>
                 ))}
             </ul>
         </div>
-        ) : null} 
+        ) : "Library Not Found"} 
     </div>
   )
 }
