@@ -34,7 +34,7 @@ const initialState: InitialState = {
 
 export const fetchBooks = createAsyncThunk("libraryDetails/fetchBooks", (libraryId) => {
     return axios
-        .get(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}`)
+        .get(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books`)
         .then(response => response.data)
 })
 
