@@ -14,10 +14,6 @@ export const LibraryDetailsView = (id: number) => {
 
   const library = getLibrary();
 
-  const handleClick = () => {
-
-  }
-
   useEffect(() => {
     dispatch(fetchBooks())
   }, [])
@@ -34,7 +30,7 @@ export const LibraryDetailsView = (id: number) => {
             <p>{library.attributes.address.city}, {library.attributes.address.state} {library.attributes.address.zip}</p>
             <p>{library.attributes.book_count} Books</p>
             <Link to="/form">
-                <button className="addBookBtn" onClick={handleClick}>Add a Book</button>
+                <button className="addBookBtn">Add a Book</button>
             </Link>
             <ul> 
                 {libraryDetails.books.map(book=> (
