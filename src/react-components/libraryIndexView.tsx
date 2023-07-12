@@ -10,13 +10,20 @@ export const LibraryIndexView = () => {
     dispatch(fetchLibraries())
   }, [])
 
-  console.log(libraryIndex.libraries)
   return (
     <div>
       <h2>List of Libraries</h2>
       {libraryIndex.loading && <div>Loading...</div>}
       {!libraryIndex.loading && libraryIndex.error ? <div>Error: {libraryIndex.error}</div> : null}
-      {!libraryIndex.loading && libraryIndex.libraries.length ? <p>Libraries have loaded - check the console.</p> : null} 
+      {!libraryIndex.loading && libraryIndex.libraries.length ? (
+        <ul>
+          {
+            libraryIndex.libraries.map(library => (
+              <li key={library.id}>{library.attributes.name}</li>
+            ))
+          }
+        </ul>
+      ) : null} 
     </div>
   )
 }
