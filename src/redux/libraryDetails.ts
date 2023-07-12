@@ -2,12 +2,6 @@ import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { RootState } from "./store";
 
-export const fetchBooks = createAsyncThunk("libraryDetails/fetchBooks", () => {
-    return axios
-        .get("https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/")
-        .then(response => response.data)
-})
-
 interface InitialState {
     loading: boolean,
     books: Book[],
@@ -37,6 +31,12 @@ const initialState: InitialState = {
     books: [], 
     error: ""
 }
+
+export const fetchBooks = createAsyncThunk("libraryDetails/fetchBooks", (libraryId) => {
+    return axios
+        .get(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}`)
+        .then(response => response.data)
+})
 
 export const libraryDetailsSlice = createSlice({
     name: "libraryDetails",
