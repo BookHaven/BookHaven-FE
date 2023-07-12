@@ -9,8 +9,12 @@ export const fetchLibraries = createAsyncThunk("libraryIndex/fetchLibraries", ()
 
 interface InitialState {
     loading: boolean,
-    libraries: Library[], 
+    libraries: Library[],
     error: string
+}
+
+interface LibraryIndexResponse {
+    data: Library[]
 }
 
 interface Library {
@@ -45,10 +49,10 @@ export const libraryIndexSlice = createSlice({
         builder.addCase(fetchLibraries.pending, (state) => {
             state.loading = true;
         })
-        builder.addCase(fetchLibraries.fulfilled, (state, action: PayloadAction<Library[]>) => {
-                state.loading = false;
-                state.libraries = action.payload;
-                state.error= "";
+        builder.addCase(fetchLibraries.fulfilled, (state, action: PayloadAction<LibraryIndexResponse>) => {
+            state.loading = false;
+            state.libraries = action.payload.data;
+            state.error= "";
         })
         builder.addCase(fetchLibraries.rejected, (state, action) => {
             state.loading = false;
