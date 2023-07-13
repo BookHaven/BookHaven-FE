@@ -1,4 +1,16 @@
-export const SingleLibrary = ({ name, address, bookCount }) => {
+interface SingleLibraryProps {
+  name: string,
+  address: {
+    street: string,
+    city: string,
+    state: string
+  },
+  bookCount: number
+}
+
+export const SingleLibrary = (props: SingleLibraryProps) => {
+  const { name, address, bookCount } = props;
+  
   return (
     <div className="single-library-container">
       {/* TO DO: add NavLink to Details page */}
