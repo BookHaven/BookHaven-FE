@@ -8,6 +8,7 @@ function App() {
   return (
     <div className="App">
       <h1 className="header">Book Haven</h1>
+      <NavLink to="/libraries" className="nav">View Libraries</NavLink>
       <LibraryIndexView />
       <LibraryDetailsView />
     </div>
