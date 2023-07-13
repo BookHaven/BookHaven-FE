@@ -13,7 +13,7 @@ export const LibraryIndexView = () => {
         key={library.id}
         name={library.attributes.name}
         address={library.attributes.address}
-        book_count={library.attributes.book_count}
+        bookCount={library.attributes.book_count}
       />
     )
   })
@@ -24,18 +24,10 @@ export const LibraryIndexView = () => {
 
   return (
     <div>
-      <h2>List of Libraries</h2>
+      <h2>All Libraries</h2>
       {libraryIndex.loading && <div>Loading...</div>}
       {!libraryIndex.loading && libraryIndex.error ? <div>Error: {libraryIndex.error}</div> : null}
-      {!libraryIndex.loading && libraryIndex.libraries.length ? (
-        <ul>
-          {
-            libraryIndex.libraries.map(library => (
-              <li key={library.id}>{library.attributes.name}</li>
-            ))
-          }
-        </ul>
-      ) : null} 
+      {!libraryIndex.loading && libraryIndex.libraries.length ? <section>{libraryCards}</section> : null} 
     </div>
   )
-}
+};
