@@ -25,7 +25,8 @@ interface Library {
         address: {
             street: string, 
             city: string, 
-            state: string
+            state: string,
+            zip: number
         }
         location: {
             latitude: number, 
