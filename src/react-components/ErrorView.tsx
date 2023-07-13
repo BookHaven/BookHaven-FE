@@ -1,4 +1,4 @@
-export const ErrorView = (error: string) => {
+export const ErrorView = ({ error }: {error: string}) => {
   let displayedError;
 
   if (error.length > 0) {
