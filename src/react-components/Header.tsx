@@ -1,13 +1,13 @@
 import React from "react";
 import '../react-components/Headers.css';
-import { Route, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 function Header() {
 
     return (
-        <Link to="/">
+        <NavLink to="/">
             <h1 className="header">Book Haven</h1>
-        </Link>
+        </NavLink>
     );
 };
 
