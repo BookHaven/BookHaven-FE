@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../redux/store';
 import { fetchLibraries } from '../redux/libraryIndex';
 import { SingleLibrary } from './SingleLibrary';
+import { ErrorView } from './ErrorView';
 
 export const LibraryIndexView = () => {
   const libraryIndex = useAppSelector(state => state.libraryIndex);
@@ -27,8 +28,7 @@ export const LibraryIndexView = () => {
     <div>
       <h2>All Libraries</h2>
       {libraryIndex.loading && <div>Loading...</div>}
-      {/* TO DO: Refactor line 31 to render Error component instead of current error message ? */}
-      {!libraryIndex.loading && libraryIndex.error ? <div>Error: {libraryIndex.error}</div> : null}
+      {!libraryIndex.loading && libraryIndex.error ? <div><ErrorView error={libraryIndex.error} /></div> : null}
       {!libraryIndex.loading && libraryIndex.libraries.length ?
         <section className="libraries-container">{libraryCards}</section> : null} 
     </div>
