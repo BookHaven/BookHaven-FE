@@ -3,16 +3,16 @@ import { useAppSelector, useAppDispatch } from '../redux/store';
 import { fetchBooks } from '../redux/libraryDetails';
 import { Link } from 'react-router-dom';
 
-export const LibraryDetailsView = (id: number) => {
+export const LibraryDetailsView = () => {
   const libraryDetails = useAppSelector(state => state.libraryDetails);
   const libraryIndex = useAppSelector(state => state.libraryIndex);
   const dispatch = useAppDispatch();
 
-  const getLibrary = () => {
+  const getLibrary = (id: number) => {
     return libraryIndex.libraries.find(library => library.id === id);
   }
 
-  const library = getLibrary();
+  const library = getLibrary(1);
 
   useEffect(() => {
     dispatch(fetchBooks())
