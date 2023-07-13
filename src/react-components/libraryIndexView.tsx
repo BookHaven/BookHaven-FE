@@ -27,6 +27,7 @@ export const LibraryIndexView = () => {
     <div>
       <h2>All Libraries</h2>
       {libraryIndex.loading && <div>Loading...</div>}
+      {/* TO DO: Refactor line 31 to render Error component instead of current error message ? */}
       {!libraryIndex.loading && libraryIndex.error ? <div>Error: {libraryIndex.error}</div> : null}
       {!libraryIndex.loading && libraryIndex.libraries.length ?
         <section className="libraries-container">{libraryCards}</section> : null} 
