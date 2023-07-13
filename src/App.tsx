@@ -2,7 +2,7 @@ import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import { LibraryIndexView } from './react-components/libraryIndexView';
 import { LibraryDetailsView } from './react-components/libraryDetailsView';
-
+import { Route, NavLink } from "react-router-dom";
 
 const App: React.FC = () => {
   return (
