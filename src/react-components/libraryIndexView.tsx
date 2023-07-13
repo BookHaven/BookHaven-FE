@@ -1,10 +1,22 @@
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../redux/store';
 import { fetchLibraries } from '../redux/libraryIndex';
+import { SingleLibrary } from './SingleLibrary';
 
 export const LibraryIndexView = () => {
   const libraryIndex = useAppSelector(state => state.libraryIndex);
   const dispatch = useAppDispatch();
+  
+  const libraryCards = libraryIndex.libraries.map(library => {
+    return (
+      <SingleLibrary
+        key={library.id}
+        name={library.attributes.name}
+        address={library.attributes.address}
+        book_count={library.attributes.book_count}
+      />
+    )
+  })
 
   useEffect(() => {
     dispatch(fetchLibraries())
