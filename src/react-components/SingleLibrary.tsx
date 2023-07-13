@@ -1,4 +1,7 @@
+import { Link } from 'react-router-dom';
+
 interface SingleLibraryProps {
+  id: number,
   name: string,
   address: {
     street: string,
@@ -9,12 +12,11 @@ interface SingleLibraryProps {
 };
 
 export const SingleLibrary = (props: SingleLibraryProps) => {
-  const { name, address, bookCount } = props;
+  const { id, name, address, bookCount } = props;
 
   return (
     <div className="single-library-container">
-      {/* TO DO: add NavLink to Details page */}
-      <h3 className="single-library-name">{name}</h3>
+      <Link to={`/libraries/${id}`}>{name}</Link>
       <p className="single-library-address">
         {address.street}<br/>
         {address.city}, {address.state}
