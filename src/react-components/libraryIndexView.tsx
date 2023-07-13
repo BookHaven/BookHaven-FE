@@ -11,6 +11,7 @@ export const LibraryIndexView = () => {
     return (
       <SingleLibrary
         key={library.id}
+        id={library.id}
         name={library.attributes.name}
         address={library.attributes.address}
         bookCount={library.attributes.book_count}
@@ -27,7 +28,8 @@ export const LibraryIndexView = () => {
       <h2>All Libraries</h2>
       {libraryIndex.loading && <div>Loading...</div>}
       {!libraryIndex.loading && libraryIndex.error ? <div>Error: {libraryIndex.error}</div> : null}
-      {!libraryIndex.loading && libraryIndex.libraries.length ? <section>{libraryCards}</section> : null} 
+      {!libraryIndex.loading && libraryIndex.libraries.length ?
+        <section className="libraries-container">{libraryCards}</section> : null} 
     </div>
   )
 };
