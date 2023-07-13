@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { useAppSelector } from '../redux/store';
+import { RootState } from './store';
 
 interface InitialState {
     isbn: number, 
@@ -21,7 +22,7 @@ interface Book {
     }
 }
 
-const libraryDetails = useAppSelector(state => state.libraryDetails)
+const libraryDetails = useAppSelector((state: RootState) => state.libraryDetails);
 
 const initialState: InitialState = {
     isbn: 0,
