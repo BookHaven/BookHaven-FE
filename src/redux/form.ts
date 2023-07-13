@@ -35,7 +35,7 @@ export const formSlice = createSlice({
     initialState,
     reducers: {
         addBook: (state, action: PayloadAction<Book>) => {
-            state.books.push(action.payload);
+            state.books = [...state.books, action.payload];
         }
     }
 })

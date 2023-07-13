@@ -29,9 +29,7 @@ export const LibraryInfo: React.FC<Props> = ({ id }) => {
             <div className="library-info">
                 <h1>{library.attributes.name}</h1>
                 <p>{library.attributes.address.street}</p>
-                <p>
-                    {library.attributes.address.city}, {library.attributes.address.state} {library.attributes.address.zip}
-                </p>
+                <p>{library.attributes.address.city}, {library.attributes.address.state} {library.attributes.address.zip}</p>
             </div>
         );
     }

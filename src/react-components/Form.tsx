@@ -1,29 +1,27 @@
-import { useEffect } from 'react';
+import React from 'react';
 import { useAppSelector, useAppDispatch } from '../redux/store';
-import { fetchLibraries } from '../redux/libraryIndex';
-import { SingleLibrary } from './SingleLibrary';
-import { ErrorView } from './ErrorView';
+import { addBook } from "../redux/form";
+import form from '../redux/form';
+import { LibraryInfo } from './LibraryInfo';
 
-export const FormView = () => {
-  const libraryDetails = useAppSelector(state => state.libraryDetails);
-  const library = libraryDetails.
+export const FormView = (id: number) => {
+    const libraryDetails = useAppSelector(state => state.libraryDetails);
+    const dispatch = useAppDispatch()
+    const newBook = 
 
-  
+    const handleClick = () => {
+        dispatch(addBook(newBook))
+    }
 
-  return (
-    <form>  
-        <h1>{library.attributes.name}</h1>
-        <p>{library.attributes.address.street}</p>
-        <p>{library.attributes.address.city}, {library.attributes.address.state} {library.attributes.address.zip}</p>
-        <p>{library.attributes.book_count} Books</p>
-        <Link to="/form">
-            <button className="addBookBtn">Add a Book</button>
-        </Link>
-        <ul> 
-            {libraryDetails.books.map(book=> (
-            <li key={book.id}>{book.attributes.book_image}</li>
-            ))}
-        </ul>
-    </form>
-  )
+    return (
+        <div>
+            <LibraryInfo id={id}/>
+            <form>  
+                <h2>Add a book to this library</h2>  
+                <input type="number" placeholder='ISBN'></input>
+                <button onClick={handleClick}>Add Book</button>
+            </form>
+        </div>
+     
+    )
 };
