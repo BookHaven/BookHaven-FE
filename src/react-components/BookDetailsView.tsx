@@ -1,25 +1,29 @@
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../redux/store';
 import { fetchSpecificBooks } from "../redux/books";
+import { fetchLibraries } from '../redux/libraryIndex';
 import { ErrorView } from './ErrorView';
 
 export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBookId: number, currentLibraryId: number}) => {
   const booksDetails = useAppSelector(state => state.books);
+  const libraryDetails = useAppSelector(state => state.libraryIndex);
   const dispatch = useAppDispatch();
   let renderWhenFulfilled;
 
   useEffect(() => {
-    dispatch(fetchSpecificBooks(currentLibraryId))
+    dispatch(fetchSpecificBooks(currentLibraryId));
+    dispatch(fetchLibraries());
   }, []);
 
   const bookToDisplay = booksDetails.books.find(book => book.id === currentBookId);
+  const libraryToDisplay = libraryDetails.libraries.find(library => library.id === currentLibraryId);
 
-  if (bookToDisplay) {
+  if (bookToDisplay && libraryToDisplay) {
     renderWhenFulfilled =
       <>
         <img src={`${bookToDisplay.attributes.book_image}`} alt={`${bookToDisplay.attributes.title}`}/>
-        {/* TO DO: add library name - need to access Library data from store */}
         <div>
+          <p>Library: {libraryToDisplay.attributes.name}</p>
           <p>{bookToDisplay.attributes.title}</p>
           <p>{bookToDisplay.attributes.author}</p>
           <span>
