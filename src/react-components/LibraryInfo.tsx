@@ -22,6 +22,8 @@ export const LibraryInfo: React.FC<Props> = ({ id }) => {
     const libraryIndex = useAppSelector((state) => state.libraryIndex);
     const library: Library | undefined = libraryIndex.libraries.find((library) => library.id === id);
 
+    console.log(id);
+
     if (!library) {
         return <div>Loading...</div>;
     } else {
@@ -32,5 +34,5 @@ export const LibraryInfo: React.FC<Props> = ({ id }) => {
                 <p>{library.attributes.address.city}, {library.attributes.address.state} {library.attributes.address.zip}</p>
             </div>
         );
-    }
+    };
 };

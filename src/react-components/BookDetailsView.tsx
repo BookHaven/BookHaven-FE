@@ -41,6 +41,9 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
       </>
   };
 
+  console.log(`Books: ${booksDetails}`)
+  console.log(`Book to display: ${bookToDisplay}`)
+  
   return (
     <div>
       {booksDetails.loading && <div>Loading...</div>}
