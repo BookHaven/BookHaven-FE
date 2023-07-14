@@ -18,10 +18,9 @@ export const FormView = (id: number) => {
             <LibraryInfo id={id}/>
             <form>  
                 <h2>Add a book to this library</h2>  
-                <input type="number" placeholder='ISBN'></input>
+                <input type="number" placeholder='ISBN'/>
                 <button onClick={handleClick}>Add Book</button>
             </form>
         </div>
-     
     )
 };
