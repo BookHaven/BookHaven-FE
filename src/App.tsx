@@ -13,7 +13,11 @@ const App: React.FC = () => {
       <Switch>
         <Route exact path='/' component={LandingView}/>
         <Route exact path='/libraries' component={LibraryIndexView} />
-        {/* <Route path='/libraries/:id' component={LibraryDetailsView} /> */}
+        <Route exact path='/libraries/:id' render={({match}) => {
+          const currentLibrary = parseInt(match.params.id);
+          return <LibraryDetailsView currentLibraryId={currentLibrary}/> }}
+        />
+
         <Route path='/libraries/:id/form' />
         <Route exact path='/libraries/:id/books/:book_id' render={({match}) => {
           const currentBook = parseInt(match.params.book_id)
