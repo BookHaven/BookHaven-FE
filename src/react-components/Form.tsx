@@ -1,20 +1,22 @@
 import React, { ChangeEvent } from 'react';
-import { useAppSelector, useAppDispatch } from '../redux/store';
+import { useAppDispatch } from '../redux/store';
 import { LibraryInfo } from './LibraryInfo';
-import books from '../redux/books';
 import { postBook } from '../redux/books';
+import { NavLink, useHistory } from 'react-router-dom';
 
 interface FormViewProps {
   currentLibraryId: number;
 }
 
+interface Isbn {
+  isbn: string
+}
+
 export const FormView = ({ currentLibraryId }: FormViewProps) => {
-    interface Isbn {
-      isbn: string
-    }
 
     const [isbn, setIsbn] = React.useState<Isbn>({ isbn: '' });
-    const dispatch = useAppDispatch()
+    const dispatch = useAppDispatch();
+    const history = useHistory();
 
     const handleIsbnChange = (event: ChangeEvent<HTMLInputElement>) => {
       setIsbn({ isbn: event.target.value });
@@ -27,7 +29,8 @@ export const FormView = ({ currentLibraryId }: FormViewProps) => {
 
     const handleClick = (event: any) => {
       event.preventDefault();
-      dispatch(postBook(parameterObject))
+      dispatch(postBook(parameterObject));
+      history.push(`/libraries/${currentLibraryId}`);
     }
 
     return (
@@ -42,7 +45,3 @@ export const FormView = ({ currentLibraryId }: FormViewProps) => {
     )
 };
 
-// pass isbn value to addBook()
-    //trigger POST request 
-    //wait for response 
-    //add response to books array 
