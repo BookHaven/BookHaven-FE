@@ -7,9 +7,14 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
   const booksDetails = useAppSelector(state => state.books);
   const dispatch = useAppDispatch();
 
+  const parameterObject = {
+    libraryId: currentLibraryId,
+    bookId: currentBookId
+  };
+
   useEffect(() => {
-    dispatch(fetchSpecificBooks(currentLibraryId, currentBookId))
-  })
+    dispatch(fetchSpecificBooks(parameterObject))
+  }, []);
 
   const bookToDisplay = booksDetails.books.find(book => book.id === currentBookId);
 
@@ -19,29 +24,27 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
       {booksDetails.loading && <div>Loading...</div>}
       {!booksDetails.loading && booksDetails.error && <div><ErrorView error={booksDetails.error} /></div>}
 
-      {!booksDetails.loading && booksDetails.books.length && bookToDisplay &&
+      {!booksDetails.loading && booksDetails.books.length && bookToDisplay && 
         <>
           <img src={`${bookToDisplay.attributes.book_image}`} alt={`${bookToDisplay.attributes.title}`}/>
-          {/* add library name */}
-          <p>${bookToDisplay.attributes.title}</p>
-          <p>${bookToDisplay.attributes.author}</p>
-          <span>
-            <p>${bookToDisplay.attributes.genre}</p>
-            <p>${bookToDisplay.attributes.isbn}</p>
-          </span>
-          <p>About</p>
-          <p>${bookToDisplay.attributes.description}</p>
-          <button>Checkout Book</button>
-          <button>Book Not Here</button>
-          <button>Return to Libraries</button>
+          {/* TO DO: add library name - need to access Library data from store */}
+          <div>
+            <p>{bookToDisplay.attributes.title}</p>
+            <p>{bookToDisplay.attributes.author}</p>
+            <span>
+              <p>{bookToDisplay.attributes.genre}</p>
+              <p>{bookToDisplay.attributes.isbn}</p>
+            </span>
+            <p>About</p>
+            <p>{bookToDisplay.attributes.description}</p>
+          </div>
+          <div>
+            <button>Checkout Book</button>
+            <button>Book Not Here</button>
+            <button>Return to Libraries</button>
+          </div>
         </>
       }
-
     </div>
-  )
+  );
 };
-
-// --> do we need to fetch all data within App?
-
-// Access that store data here using Selector hook & store in a object variable
-// Use object to write return statement rendering, following wireframe
