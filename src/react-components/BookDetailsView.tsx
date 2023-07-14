@@ -41,13 +41,10 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
       </>
   };
 
-  console.log(`Books: ${booksDetails}`)
-  console.log(`Book to display: ${bookToDisplay}`)
-  
   return (
     <div>
       {booksDetails.loading && <div>Loading...</div>}
-      {!booksDetails.loading && booksDetails.error && <div><ErrorView error={booksDetails.error} /></div>}
+      {!booksDetails.loading && booksDetails.error || !bookToDisplay && <div><ErrorView error={booksDetails.error} /></div>}
       {!booksDetails.loading && booksDetails.books.length && bookToDisplay && <>{renderWhenFulfilled}</>}
     </div>
   );
