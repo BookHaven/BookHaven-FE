@@ -10,15 +10,8 @@ interface LibraryDetailsViewProps {
 
 export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps) => {
   const books = useAppSelector(state => state.books);
-  // const libraryIndex = useAppSelector(state => state.libraryIndex);
   const dispatch = useAppDispatch();
-
-  // const getLibrary = () => {
-  //   libraryIndex.libraries.find(library => library.id === libraryId)
-  // }
-
-  // const library = getLibrary();
-
+  
   useEffect(() => {
     dispatch(fetchBooks(currentLibraryId))
   }, [])

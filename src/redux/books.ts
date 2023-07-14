@@ -26,8 +26,12 @@ interface ParameterObject {
   isbn: string
 };
 
-interface BooksResponse {
+interface GetBooksResponse {
   data: Book[]
+};
+
+interface PostBooksResponse {
+  data: Book
 };
 
 const initialState: InitialState = {
@@ -66,7 +70,7 @@ export const booksSlice = createSlice({
     builder.addCase(fetchBooks.pending, (state) => {
       state.loading = true;
     })
-    builder.addCase(fetchBooks.fulfilled, (state, action: PayloadAction<BooksResponse>) => {
+    builder.addCase(fetchBooks.fulfilled, (state, action: PayloadAction<GetBooksResponse>) => {
       state.loading = false;
       state.books = action.payload.data;
       state.error = "";
@@ -76,8 +80,8 @@ export const booksSlice = createSlice({
       state.books = [];
       state.error = action.error.message || "Error: Unable to fetch data";
     })
-    builder.addCase(postBook.fulfilled, (state, action: PayloadAction<Book>) => {
-      state.books.push(action.payload);
+    builder.addCase(postBook.fulfilled, (state, action: PayloadAction<PostBooksResponse>) => {
+      state.books.push(action.payload.data);
     });
   },
 });
