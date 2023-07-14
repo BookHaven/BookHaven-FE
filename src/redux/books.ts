@@ -21,6 +21,10 @@ interface Book {
   }
 };
 
+interface Isbn {
+  isbn: string
+}
+
 interface BooksResponse {
   data: Book[]
 };
@@ -41,7 +45,7 @@ export const booksSlice = createSlice({
   name: "books",
   initialState,
   reducers: {
-    addBook: (state, action: PayloadAction<Book>) => {
+    addBook: (state, action: PayloadAction<Isbn>) => {
       state.books.push(action.payload);
     },
     removeBook: (state, action: PayloadAction<number>) => {

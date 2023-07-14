@@ -21,7 +21,7 @@ export const FormView = (id: number) => {
     };
 
     const handleClick = () => {
-        dispatch(addBook())
+        dispatch(addBook(isbn))
     }
 
     return (
