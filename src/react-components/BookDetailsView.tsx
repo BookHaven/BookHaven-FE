@@ -8,13 +8,8 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
   const dispatch = useAppDispatch();
   let renderWhenFulfilled;
 
-  const parameterObject = {
-    libraryId: currentLibraryId,
-    bookId: currentBookId
-  };
-
   useEffect(() => {
-    dispatch(fetchSpecificBooks(parameterObject))
+    dispatch(fetchSpecificBooks(currentLibraryId))
   }, []);
 
   const bookToDisplay = booksDetails.books.find(book => book.id === currentBookId);

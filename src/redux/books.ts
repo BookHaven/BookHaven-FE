@@ -31,14 +31,7 @@ const initialState: InitialState = {
   error: ""
 };
 
-interface ParameterObject {
-  libraryId: number,
-  bookId: number
-};
-
-export const fetchSpecificBooks = createAsyncThunk('bookDetails/fetchSpecificBooks', (parameterObject: ParameterObject) => {
-  const { libraryId, bookId } = parameterObject;
-
+export const fetchSpecificBooks = createAsyncThunk('bookDetails/fetchSpecificBooks', (libraryId: number) => {
   return axios 
     .get(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books`)
     .then(response => response.data)
