@@ -3,6 +3,7 @@ import { useAppSelector, useAppDispatch } from '../redux/store';
 import { fetchSpecificBooks } from "../redux/books";
 import { fetchLibraries } from '../redux/libraryIndex';
 import { ErrorView } from './ErrorView';
+import '../styles/bookDetailsView.css';
 
 export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBookId: number, currentLibraryId: number}) => {
   const booksDetails = useAppSelector(state => state.books);
@@ -21,29 +22,27 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
   if (bookToDisplay && libraryToDisplay) {
     renderWhenFulfilled =
       <>
-        <img src={`${bookToDisplay.attributes.book_image}`} alt={`${bookToDisplay.attributes.title}`}/>
-        <div>
-          <p>Library: {libraryToDisplay.attributes.name}</p>
-          <p>{bookToDisplay.attributes.title}</p>
-          <p>{bookToDisplay.attributes.author}</p>
-          <span>
-            <p>{bookToDisplay.attributes.genre}</p>
-            <p>{bookToDisplay.attributes.isbn}</p>
-          </span>
-          <p>About</p>
-          <p>{bookToDisplay.attributes.description}</p>
-        </div>
-        <div>
-          <button>Checkout Book</button>
-          <button>Book Not Here</button>
-          <button>Return to Libraries</button>
+        <div className="books-container">
+          <img className="books-image" src={`${bookToDisplay.attributes.book_image}`} alt="Book cover"/>
+          <div className="books-details">
+            <p className="books-library-name">Library: {libraryToDisplay.attributes.name}</p>
+            <h1>{bookToDisplay.attributes.title}</h1>
+            <h3>{bookToDisplay.attributes.author}</h3>
+            <p>{bookToDisplay.attributes.genre} • ISBN {bookToDisplay.attributes.isbn}</p>
+            <h3>About</h3>
+            <p>{bookToDisplay.attributes.description}</p>
+          </div>
+          <div className="books-buttons-container">
+            <button>Checkout Book</button>
+            <button>Book Not Here</button>
+            <button>Return to Libraries</button>
+          </div>
         </div>
       </>
   };
 
   return (
     <div>
-      <h2>Book Details</h2>
       {booksDetails.loading && <div>Loading...</div>}
       {!booksDetails.loading && booksDetails.error && <div><ErrorView error={booksDetails.error} /></div>}
       {!booksDetails.loading && booksDetails.books.length && bookToDisplay && <>{renderWhenFulfilled}</>}

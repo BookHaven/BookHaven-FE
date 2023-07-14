@@ -1,4 +1,29 @@
 .books-container {
   display: flex;
-  flex-direction: row;
+  justify-content: space-between;
+  margin: 4rem;
+}
+
+.books-details {
+  max-width: 60%;
+  padding-left: 2rem;
+  text-align: left;
+}
+
+.books-library-name {
+  margin-top: 0;
+}
+
+.books-image {
+  height: 193px;
+  width: 128px;
+}
+
+.books-buttons-container {
+  width: 12rem;
+}
+
+.books-buttons-container > button {
+  margin: 0.5rem;
+  width: 10rem;
 }
