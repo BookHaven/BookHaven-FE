@@ -37,13 +37,13 @@ const initialState: InitialState = {
 
 export const fetchBooks = createAsyncThunk('books/fetchBooks', (libraryId: number) => {
   return axios 
-    .get(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books`)
+    .get(`https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/${libraryId}/books`)
     .then(response => response.data)
 });
 
 export const postBook = createAsyncThunk('books/postBook', async (isbn: string) => {
   try {
-    const response = await axios.post('https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/books', { isbn });
+    const response = await axios.post('https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/books', { isbn });
     return response.data;
   } catch (error) {
     throw new Error('Error: Unable to add book');
@@ -83,4 +83,4 @@ export const booksSlice = createSlice({
 });
 
 export default booksSlice.reducer;
-export const { addBook, removeBook } = booksSlice.actions;
+// export const { addBook, removeBook } = booksSlice.actions;
