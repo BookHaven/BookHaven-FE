@@ -11,12 +11,12 @@ const App: React.FC = () => {
       <Switch>
         <Route exact path='/' />
         <Route exact path='/libraries' component={LibraryIndexView} />
-        <Route path='/libraries/:id' component={LibraryDetailsView} />
+        {/* <Route path='/libraries/:id' component={LibraryDetailsView} /> */}
         <Route path='/libraries/:id/form' />
         <Route exact path='/libraries/:id/books/:book_id' render={({match}) => {
-          const currentBook = match.params.book_id;
-          const currentLibrary = match.params.id;
-          return <BookDetailsView currentBook={currentBook} currentLibrary={currentLibrary}/> }}
+          const currentBook = parseInt(match.params.book_id)
+          const currentLibrary = parseInt(match.params.id);
+          return <BookDetailsView currentBookId={currentBook} currentLibraryId={currentLibrary}/> }}
         />
       </Switch>
     </div>
