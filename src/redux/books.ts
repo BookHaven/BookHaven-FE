@@ -21,7 +21,7 @@ interface Book {
   }
 };
 
-interface BookDetailsResponse {
+interface BooksResponse {
   data: Book[]
 };
 
@@ -31,26 +31,33 @@ const initialState: InitialState = {
   error: ""
 };
 
-export const fetchSpecificBooks = createAsyncThunk('bookDetails/fetchSpecificBooks', (libraryId: number) => {
+export const fetchBooks = createAsyncThunk('books/fetchBooks', (libraryId: number) => {
   return axios 
     .get(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books`)
     .then(response => response.data)
 });
 
-export const bookDetailsSlice = createSlice({
-  name: "bookDetails",
+export const booksSlice = createSlice({
+  name: "books",
   initialState,
-  reducers: {}, // TO CHECK: do addBook and removeBook need to be reducers here for buttons?
+  reducers: {
+    addBook: (state, action: PayloadAction<Book>) => {
+      state.books.push(action.payload);
+    },
+    removeBook: (state, action: PayloadAction<number>) => {
+      state.books = state.books.filter((book) => book.id !== action.payload);
+    }
+  },
   extraReducers: builder => {
-    builder.addCase(fetchSpecificBooks.pending, (state) => {
+    builder.addCase(fetchBooks.pending, (state) => {
       state.loading = true;
     })
-    builder.addCase(fetchSpecificBooks.fulfilled, (state, action: PayloadAction<BookDetailsResponse>) => {
+    builder.addCase(fetchBooks.fulfilled, (state, action: PayloadAction<BooksResponse>) => {
       state.loading = false;
       state.books = action.payload.data;
       state.error = "";
     })
-    builder.addCase(fetchSpecificBooks.rejected, (state, action) => {
+    builder.addCase(fetchBooks.rejected, (state, action) => {
       state.loading = false;
       state.books = [];
       state.error = action.error.message || "Error: Unable to fetch data";
@@ -58,4 +65,5 @@ export const bookDetailsSlice = createSlice({
   }
 });
 
-export default bookDetailsSlice.reducer;
+export default booksSlice.reducer;
+export const { addBook, removeBook } = booksSlice.actions;

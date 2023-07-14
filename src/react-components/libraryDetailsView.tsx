@@ -1,42 +1,41 @@
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../redux/store';
-import { fetchBooks } from '../redux/libraryDetails';
-import { Link } from 'react-router-dom';
+import { fetchBooks } from '../redux/books';
+import { NavLink } from 'react-router-dom';
+import { LibraryInfo } from './LibraryInfo';
 
-export const LibraryDetailsView = () => {
-  const libraryDetails = useAppSelector(state => state.libraryDetails);
-  const libraryIndex = useAppSelector(state => state.libraryIndex);
+export const LibraryDetailsView = (libraryId: number) => {
+  const books = useAppSelector(state => state.books);
+  // const libraryIndex = useAppSelector(state => state.libraryIndex);
   const dispatch = useAppDispatch();
 
-  const getLibrary = (id: number) => {
-    return libraryIndex.libraries.find(library => library.id === id);
-  }
+  // const getLibrary = () => {
+  //   libraryIndex.libraries.find(library => library.id === libraryId)
+  // }
 
-  const library = getLibrary(1);
+  // const library = getLibrary();
 
   useEffect(() => {
-    dispatch(fetchBooks())
+    dispatch(fetchBooks(libraryId))
   }, [])
 
   return (
     <div>
-      <h2></h2>
-      {libraryDetails.loading && <div>Loading...</div>}
-      {!libraryDetails.loading && libraryDetails.error ? <div>Error: {libraryDetails.error}</div> : null}
-      {library && !libraryDetails.loading && libraryDetails.books.length ? (
+      <LibraryInfo id={libraryId} />
+      {books.loading && <div>Loading...</div>}
+      {!books.loading && books.error ? <div>Error: {books.error}</div> : null}
+      {!books.loading && books.books.length ? (
         <div className="libraryDetailsPage">
-            <h1>{library.attributes.name}</h1>
-            <p>{library.attributes.address.street}</p>
-            <p>{library.attributes.address.city}, {library.attributes.address.state} {library.attributes.address.zip}</p>
-            <p>{library.attributes.book_count} Books</p>
-            <Link to="/form">
-                <button className="addBookBtn">Add a Book</button>
-            </Link>
-            <ul> 
-                {libraryDetails.books.map(book=> (
-                <li key={book.id}>{book.attributes.book_image}</li>
+            <NavLink to="/form">
+              <button className="addBookBtn">Add a Book</button>
+            </NavLink>
+            <section>
+              {books.books.map(book=> (
+                <NavLink to={`/libraries/${libraryId}/books/${book.id}`}>
+                  <article key={book.id}>{book.attributes.book_image}</article>
+                </NavLink>
                 ))}
-            </ul>
+            </section>
         </div>
         ) : "Library Not Found"} 
     </div>

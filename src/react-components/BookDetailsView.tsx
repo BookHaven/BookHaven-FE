@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../redux/store';
-import { fetchSpecificBooks } from "../redux/books";
+import { fetchBooks } from "../redux/books";
 import { fetchLibraries } from '../redux/libraryIndex';
 import { ErrorView } from './ErrorView';
 import '../styles/bookDetailsView.css';
@@ -12,7 +12,7 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
   let renderWhenFulfilled;
 
   useEffect(() => {
-    dispatch(fetchSpecificBooks(currentLibraryId));
+    dispatch(fetchBooks(currentLibraryId));
     dispatch(fetchLibraries());
   }, []);
 
