@@ -4,6 +4,7 @@ import { addBook } from "../redux/form";
 import form from '../redux/form';
 import { LibraryInfo } from './LibraryInfo';
 import books from '../redux/books';
+import { postBook } from '../redux/books';
 
 export const FormView = (id: number) => {
 
@@ -12,8 +13,6 @@ export const FormView = (id: number) => {
     }
 
     const [isbn, setIsbn] = React.useState<Isbn>({ isbn: '' });
-
-    const libraryDetails = useAppSelector(state => state.libraryDetails);
     const dispatch = useAppDispatch()
 
     const handleIsbnChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -21,7 +20,7 @@ export const FormView = (id: number) => {
     };
 
     const handleClick = () => {
-        dispatch(addBook(isbn))
+        dispatch(postBook(isbn.isbn))
     }
 
     return (
