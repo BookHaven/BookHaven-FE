@@ -3,19 +3,19 @@ import axios from "axios";
 
 export const fetchLibraries = createAsyncThunk("libraryIndex/fetchLibraries", () => {
     return axios
-        .get("https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries")
+        .get("https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries")
         .then(response => response.data)
-})
+});
 
 interface InitialState {
     loading: boolean,
     libraries: Library[],
     error: string
-}
+};
 
 interface LibraryIndexResponse {
     data: Library[]
-}
+};
 
 interface Library {
     id: number, 
@@ -34,13 +34,13 @@ interface Library {
         }
         book_count: number, 
     }
-}
+};
 
 const initialState: InitialState = {
     loading: false, 
     libraries: [], 
     error: ""
-}
+};
 
 export const libraryIndexSlice = createSlice({
     name: "libraryIndex",
@@ -61,6 +61,6 @@ export const libraryIndexSlice = createSlice({
             state.error = action.error.message || "Error: Unable to fetch data";
         })
     }
-})
+});
 
-export default libraryIndexSlice.reducer
+export default libraryIndexSlice.reducer;

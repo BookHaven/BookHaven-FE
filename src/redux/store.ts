@@ -2,11 +2,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import libraryIndexReducer from "./libraryIndex";
 import libraryDetailsReducer, { addBook, removeBook } from "./libraryDetails";
+import bookDetailsReducer from "./books";
 
 const store = configureStore({
     reducer: {
         libraryIndex: libraryIndexReducer,
-        libraryDetails: libraryDetailsReducer
+        libraryDetails: libraryDetailsReducer,
+        books: bookDetailsReducer,
     }
 })
 
