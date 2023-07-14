@@ -5,7 +5,11 @@ import { LibraryInfo } from './LibraryInfo';
 import books from '../redux/books';
 import { postBook } from '../redux/books';
 
-export const FormView = (id: number) => {
+interface FormViewProps {
+  currentLibraryId: number;
+}
+
+export const FormView = ({ currentLibraryId }: FormViewProps) => {
 
     interface Isbn {
         isbn: string
@@ -24,7 +28,7 @@ export const FormView = (id: number) => {
 
     return (
         <div>
-            <LibraryInfo id={id}/>
+            <LibraryInfo id={currentLibraryId}/>
             <form>  
                 <h2>Add a book to this library</h2>  
                 <input type="text" placeholder='ISBN' value={isbn.isbn} onChange={handleIsbnChange}/>

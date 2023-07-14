@@ -4,7 +4,7 @@ import { LibraryIndexView } from './react-components/libraryIndexView';
 import { LibraryDetailsView } from './react-components/libraryDetailsView';
 import { LandingView } from './react-components/LandingView';
 import { BookDetailsView } from './react-components/BookDetailsView';
-
+import { FormView } from './react-components/Form';
 
 const App: React.FC = () => {
   return (
@@ -18,7 +18,10 @@ const App: React.FC = () => {
           return <LibraryDetailsView currentLibraryId={currentLibrary}/> }}
         />
 
-        <Route path='/libraries/:id/form' />
+        <Route path='/libraries/:id/form' render={({match}) => {
+          const currentLibrary = parseInt(match.params.id);
+          return <FormView currentLibraryId={currentLibrary}/> }}/>
+
         <Route exact path='/libraries/:id/books/:book_id' render={({match}) => {
           const currentBook = parseInt(match.params.book_id)
           const currentLibrary = parseInt(match.params.id);
