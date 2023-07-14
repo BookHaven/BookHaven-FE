@@ -30,7 +30,7 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
       {!books.loading && books.error ? <div>Error: {books.error}</div> : null}
       {!books.loading && books.books.length ? (
         <div className="libraryDetailsPage">
-            <NavLink to="/form">
+            <NavLink to={`/libraries/${currentLibraryId}/form`}>
               <button className="addBookBtn">Add a Book</button>
             </NavLink>
             <section>
