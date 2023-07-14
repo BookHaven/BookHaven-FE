@@ -21,6 +21,10 @@ interface Book {
   }
 };
 
+interface Isbn {
+  isbn: string
+}
+
 interface BooksResponse {
   data: Book[]
 };
@@ -33,17 +37,27 @@ const initialState: InitialState = {
 
 export const fetchBooks = createAsyncThunk('books/fetchBooks', (libraryId: number) => {
   return axios 
-    .get(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books`)
+    .get(`https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/${libraryId}/books`)
     .then(response => response.data)
+});
+
+export const postBook = createAsyncThunk('books/postBook', async (isbn: string) => {
+  try {
+    const response = await axios.post('https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/books', { isbn });
+    return response.data;
+  } catch (error) {
+    throw new Error('Error: Unable to add book');
+  }
 });
 
 export const booksSlice = createSlice({
   name: "books",
   initialState,
   reducers: {
-    addBook: (state, action: PayloadAction<Book>) => {
-      state.books.push(action.payload);
-    },
+    // addBook: (state, action: PayloadAction<Isbn>) => {
+    //   const bookObj = postBook(action.payload.isbn)
+    //   state.books.push(bookObj)
+    // },
     removeBook: (state, action: PayloadAction<number>) => {
       state.books = state.books.filter((book) => book.id !== action.payload);
     }
@@ -62,8 +76,11 @@ export const booksSlice = createSlice({
       state.books = [];
       state.error = action.error.message || "Error: Unable to fetch data";
     })
-  }
+    builder.addCase(postBook.fulfilled, (state, action: PayloadAction<Book>) => {
+      state.books.push(action.payload);
+    });
+  },
 });
 
 export default booksSlice.reducer;
-export const { addBook, removeBook } = booksSlice.actions;
+// export const { addBook, removeBook } = booksSlice.actions;
