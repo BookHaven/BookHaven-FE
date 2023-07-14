@@ -4,34 +4,31 @@ import { fetchBooks } from '../redux/books';
 import { NavLink } from 'react-router-dom';
 import { LibraryInfo } from './LibraryInfo';
 
-export const LibraryDetailsView = (libraryId: number) => {
+interface LibraryDetailsViewProps {
+  currentLibraryId: number;
+}
+
+export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps) => {
   const books = useAppSelector(state => state.books);
-  // const libraryIndex = useAppSelector(state => state.libraryIndex);
   const dispatch = useAppDispatch();
-
-  // const getLibrary = () => {
-  //   libraryIndex.libraries.find(library => library.id === libraryId)
-  // }
-
-  // const library = getLibrary();
-
+  
   useEffect(() => {
-    dispatch(fetchBooks(libraryId))
+    dispatch(fetchBooks(currentLibraryId))
   }, [])
 
   return (
     <div>
-      <LibraryInfo id={libraryId} />
+      <LibraryInfo id={currentLibraryId} />
       {books.loading && <div>Loading...</div>}
       {!books.loading && books.error ? <div>Error: {books.error}</div> : null}
       {!books.loading && books.books.length ? (
         <div className="libraryDetailsPage">
-            <NavLink to="/form">
+            <NavLink to={`/libraries/${currentLibraryId}/form`}>
               <button className="addBookBtn">Add a Book</button>
             </NavLink>
             <section>
               {books.books.map(book=> (
-                <NavLink to={`/libraries/${libraryId}/books/${book.id}`}>
+                <NavLink to={`/libraries/${currentLibraryId}/books/${book.id}`}>
                   <article key={book.id}>{book.attributes.book_image}</article>
                 </NavLink>
                 ))}
