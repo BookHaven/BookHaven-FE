@@ -40,7 +40,14 @@ export const fetchSpecificBooks = createAsyncThunk('bookDetails/fetchSpecificBoo
 export const bookDetailsSlice = createSlice({
   name: "bookDetails",
   initialState,
-  reducers: {}, // TO CHECK: do addBook and removeBook need to be reducers here for buttons?
+  reducers: {
+    addBook: (state, action: PayloadAction<Book>) => {
+      state.books.push(action.payload);
+    },
+    removeBook: (state, action: PayloadAction<number>) => {
+      state.books = state.books.filter((book) => book.id !== action.payload);
+    }
+  },
   extraReducers: builder => {
     builder.addCase(fetchSpecificBooks.pending, (state) => {
       state.loading = true;
