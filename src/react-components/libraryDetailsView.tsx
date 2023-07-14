@@ -28,10 +28,12 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
             </NavLink>
             <section>
               {books.books.map(book=> (
-                <NavLink to={`/libraries/${currentLibraryId}/books/${book.id}`}>
-                  <article key={book.id}>{book.attributes.book_image}</article>
-                </NavLink>
-                ))}
+                <div>
+                  <NavLink to={`/libraries/${currentLibraryId}/books/${book.id}`}>
+                    <img src={book.attributes.book_image} key={book.id} />
+                  </NavLink>
+                </div>
+              ))}
             </section>
         </div>
         ) : "Library Not Found"} 
