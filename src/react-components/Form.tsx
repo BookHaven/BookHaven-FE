@@ -1,6 +1,5 @@
 import React, { ChangeEvent } from 'react';
 import { useAppSelector, useAppDispatch } from '../redux/store';
-// import form from '../redux/form';
 import { LibraryInfo } from './LibraryInfo';
 import books from '../redux/books';
 import { postBook } from '../redux/books';
@@ -10,20 +9,25 @@ interface FormViewProps {
 }
 
 export const FormView = ({ currentLibraryId }: FormViewProps) => {
-
     interface Isbn {
-        isbn: string
+      isbn: string
     }
 
     const [isbn, setIsbn] = React.useState<Isbn>({ isbn: '' });
     const dispatch = useAppDispatch()
 
     const handleIsbnChange = (event: ChangeEvent<HTMLInputElement>) => {
-        setIsbn({ isbn: event.target.value });
+      setIsbn({ isbn: event.target.value });
     };
 
-    const handleClick = () => {
-        dispatch(postBook(isbn.isbn))
+    const parameterObject = {
+      libraryId: currentLibraryId,
+      isbn: isbn.isbn
+    };
+
+    const handleClick = (event: any) => {
+      event.preventDefault();
+      dispatch(postBook(parameterObject))
     }
 
     return (
