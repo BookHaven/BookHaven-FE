@@ -35,7 +35,7 @@ describe('Book Details page', () => {
   })
 
   it('Displays an error message if the URL isn\'t found (400 level error)', () => {
-    // update error message text
+    // TO DO: update error message text
     cy.visit('http://localhost:3000/libraries/1/books/2')
       .wait('@getBooks')
     cy.get('.error-message').should('have.text', '404: Page not found. Please click the logo above to return home.')
@@ -49,7 +49,6 @@ describe('Book Details page', () => {
         message: 'Internal Server Error'
       }
     }).as('getBooks')
-
     cy.visit('http://localhost:3000/libraries/1/books/2')
       .wait('@getBooks')
     cy.get('.error-message').should('have.text', 'We seem to be having technical issues. Please try again later.')
@@ -61,7 +60,7 @@ describe('Book Details page', () => {
     cy.wait('@getBooks')
   })
 
-  it.skip('User can click a button to remove this book from this library', () => {
+  it('User can click a button to remove this book from this library', () => {
     cy.intercept('DELETE', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/1/books/1', {
     // cy.intercept('DELETE', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books/1', {
       statusCode: 200,
@@ -74,10 +73,20 @@ describe('Book Details page', () => {
     cy.get('.books-section').children().should('have.length', 4)
   })
 
-  // TO DO:
   it.skip('User can click the Header logo to return to the Landing page', () => {
-    // revise using updated Header button
+    // TO DO: revise using updated Header button
     cy.get('.books-return').click()
     cy.url().should('eq', 'http://localhost:3000')
   })
+
+  // TO DO: Finish assertion if functionality is added
+  // it.skip('Displays a message if the Remove request is not successful', () => {
+  //   cy.intercept('DELETE', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/1/books/2', {
+  //   // cy.intercept('DELETE', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books/2', {
+  //     statusCode: 404,
+  //     body: {
+  //       message: 'Internal Server Error'
+  //     }
+  //   })
+  // })
 })
