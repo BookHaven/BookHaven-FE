@@ -30,11 +30,11 @@ describe('Library Details page', () => {
 
     it('should direct users to library details page once "Add Book" button is clicked', () => {
         cy.get('form').find('.add-book-btn').click()
-        cy.url().should('include', '/libraries/1')
+        cy.url().should('eq', 'http://localhost:3000/libraries/1')
     })
 
     it('should direct users to library details page when "Return" button is clicked', () => {
         cy.get('.form-page').find('.return-to-books-btn').click()
-        cy.url().should('include', '/libraries/1')
+        cy.url().should('eq', 'http://localhost:3000/libraries/1')
     })
 })

@@ -3,11 +3,11 @@ describe('Library Details page', () => {
         cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books', {
             statusCode: 200,
             fixture: 'books.json'})
-            .visit('http://localhost:3000/libraries/1')
+        cy.visit('http://localhost:3000/libraries/1')
     })
   
     it('should go to url ending with "/libraries/1"', () => {
-        cy.url().should('include', '/libraries/1')
+        cy.url().should('eq', 'http://localhost:3000/libraries/1')
     })
     
     it('should display an error message when books cannot be fetched', () => {
@@ -44,11 +44,11 @@ describe('Library Details page', () => {
 
     it('should display each book as a link to the book details page', () => {
         cy.get('.book').eq(0).click()
-        cy.url().should('include', '/libraries/1/books/1')
+        cy.url().should('eq', 'http://localhost:3000//libraries/1/books/1')
     })
     
     it('should display an add book button which takes users to a form page', () => {
         cy.get('.libraryDetailsPage').find('.addBookBtn').click()
-        cy.url().should('include', '/form')
+        cy.url().should('eq', 'http://localhost:3000/libraries/1/form')
     })
 })
