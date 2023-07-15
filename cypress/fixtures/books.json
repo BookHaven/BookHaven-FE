@@ -63,31 +63,5 @@
         "genre": "Fiction",
         "library_id": 1
     }
-  },
-  {
-    "id": 11,
-    "type": "book",
-    "attributes": {
-        "title": "Fahrenheit 451",
-        "author": "Ray Bradbury",
-        "isbn": "9781451673319",
-        "book_image": "http://books.google.com/books/content?id=y3CyRurE7P4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-        "description": "A totalitarian regime has ordered all books to be destroyed, but one of the book burners, Guy Montag, suddenly realizes their merit.",
-        "genre": "Ray Bradbury",
-        "library_id": 2
-    }
-  },
-  {
-    "id": 13,
-    "type": "book",
-    "attributes": {
-        "title": "Wizard's First Rule",
-        "author": "Terry Goodkind",
-        "isbn": "312857055",
-        "book_image": "http://books.google.com/books/content?id=w7jZ-nfXRe0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-        "description": "An unearthly adversary descends on an idyllic fantasy world, corrupting magic against good and slaughtering innocents, and only a single man can stop him",
-        "genre": "Fiction",
-        "library_id": 2
-    }
   }
 ]}
