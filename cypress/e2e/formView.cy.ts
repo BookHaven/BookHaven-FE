@@ -21,7 +21,11 @@ describe('Library Details page', () => {
     })
 
     it('should have an input field that takes in an ISBN', () => {
+        cy.get('#isbn-input').should('be.visible'); 
+        cy.get('#isbn-input').should('have.attr', 'placeholder', 'Enter ISBN');
         
+        cy.get('input[name="isbn"]').type('12345')
+        cy.get('input[name="isbn"]').should('have.value', '12345')
     })
 
     it('should direct users to library details page once "Add Book" button is clicked', () => {

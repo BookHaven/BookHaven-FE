@@ -43,7 +43,7 @@ export const FormView = ({ currentLibraryId }: FormViewProps) => {
             <button className="return-to-books-btn" onClick={returnToBooks}>Return</button>
             <form>  
                 <h2>Add a book to this library</h2>  
-                <input type="text" placeholder='ISBN' value={isbn.isbn} onChange={handleIsbnChange}/>
+                <input id="isbn-input" type="text" name="isbn" placeholder='Enter ISBN' value={isbn.isbn} onChange={handleIsbnChange}/>
                 <button className="add-book-btn" onClick={handleClick}>Add Book</button>
             </form>
         </div>
