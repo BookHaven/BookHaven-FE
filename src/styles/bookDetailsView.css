@@ -10,6 +10,9 @@
 }
 
 .books-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   max-width: 60%;
   padding-left: 2rem;
   text-align: left;
@@ -17,6 +20,7 @@
 
 .books-library-name {
   margin-top: 0;
+  font-weight: bold
 }
 
 .books-image {
@@ -24,16 +28,36 @@
   width: 128px;
 }
 
-.books-remove {
+.books-title {
+  margin-bottom: 0;
+}
+
+.books-title,
+.books-author {
+  margin-top: 0.5rem;
+}
+
+.books-isbn, 
+.books-genre {
+  margin: 0.5rem 0 0 0;
+}
+
+.books-remove-button {
   margin: 0.5rem;
-  height: fit-content;
   width: 10rem;
+  height: 2rem;
+  background-color: white;
+  color: #684526;
+  text-align: center;
+  padding: 0.25rem;
+  border: 1px solid #684526;
+  border-radius: 3px;
+  cursor: pointer;
 }
 
 .tooltip {
   position: relative;
   display: inline-block;
-  height: fit-content;
 }
 
 .tooltip .tooltiptext {
