@@ -42,7 +42,7 @@ describe('Library Details page', () => {
 
     it('should display each book as a link to the book details page', () => {
         cy.get('.book').eq(0).click()
-        cy.url().should('eq', 'http://localhost:3000//libraries/1/books/1')
+        .url().should('eq', 'http://localhost:3000/libraries/1/books/1')
     })
     
     it('should display an add book button which takes users to a form page', () => {
