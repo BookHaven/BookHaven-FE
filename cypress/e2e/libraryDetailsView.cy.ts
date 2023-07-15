@@ -30,7 +30,7 @@ describe('Library Details page', () => {
     })
 
     it('should display the name of the library', () => {
-      
+        cy.contains("h1", "Mary Beth Ball")
     })
 
     it('should display the address of the library', () => {
