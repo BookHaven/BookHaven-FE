@@ -4,39 +4,48 @@ describe('Book Details page', () => {
       statusCode: 200,
       fixture: 'books'
     }).as('getBooks')
-    // cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries', {
-    //   statusCode: 200,
-    //   fixture: 'libraries'
-    // }).as('getLibraries')
-    
-    cy.visit('http://localhost:3000/libraries/1')
-    console.log('@getBooks')
-    cy.wait('@getBooks')
-    // cy.wait('@getLibraries')
 
+    cy.visit('http://localhost:3000/libraries/1')
+    cy.wait('@getBooks')
   });
 
-  it('', () => {
+  it('User can click on a specific book on the Library Details page to navigate to a Book Details page', () => {
+    cy.get('.book-link').first().click()
+    cy.url().should('eq', 'http://localhost:3000/libraries/1/books/1')
+
+    cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books', {
+      statusCode: 200,
+      fixture: 'books'
+    }).as('getBooks')
+    cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries', {
+      statusCode: 200,
+      fixture: 'libraries'
+    }).as('getLibraries')
+    cy.wait('@getBooks')
+      .wait('@getLibraries')
+  })
+
+  it.skip('', () => {
     
   })
 
-  it('', () => {
+  it.skip('', () => {
     
   })
 
-  it('', () => {
+  it.skip('', () => {
     
   })
 
-  it('', () => {
+  it.skip('', () => {
     
   })
 
-  it('', () => {
+  it.skip('', () => {
     
   })
 
-  it('', () => {
+  it.skip('', () => {
     
   })
 
