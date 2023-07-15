@@ -30,11 +30,12 @@ describe('Library Details page', () => {
     })
 
     it('should display the name of the library', () => {
-        cy.contains("h1", "Mary Beth Ball")
+        cy.contains("h1", "Mary Beth Ball");
     })
 
     it('should display the address of the library', () => {
-      
+        cy.get('.street').should('have.string', '1748 S. Washington Steet');
+        cy.get('.city-state-zip').should('have.string', 'Denver, CO 80210');
     })
 
     it('should display a list of books for the library', () => {
