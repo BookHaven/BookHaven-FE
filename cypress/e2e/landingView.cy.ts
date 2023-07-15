@@ -4,7 +4,6 @@ describe('Landing page', () => {
   })
 
   it('Displays the Book Haven landing page', () => {
-    Cypress.on('uncaught:exception', () => false)
     cy.get('h1').should('have.text', 'Book Haven')
     cy.get('.landing-button').should('have.text', 'See All Libraries')
     // TO DO: After styling, finish assertion
@@ -17,11 +16,11 @@ describe('Landing page', () => {
     }).as('getLibraries')
     
     cy.get('.landing-button').click()
-    cy.wait('@getLibraries')
-    cy.url().should('eq', 'http://localhost:3000/libraries')
+      .wait('@getLibraries')
+      .url().should('eq', 'http://localhost:3000/libraries')
   })
 
-  it.skip('User can click the Header logo to refresh the page', () => {
+  it.skip('User can click the Header logo to refresh the current page', () => {
     // TO DO: After styling, finish assertion
   })
 })
