@@ -3,6 +3,7 @@ import { useAppSelector, useAppDispatch } from '../redux/store';
 import { fetchBooks } from '../redux/books';
 import { NavLink } from 'react-router-dom';
 import { LibraryInfo } from './LibraryInfo';
+import { ErrorView } from './ErrorView';
 
 interface LibraryDetailsViewProps {
   currentLibraryId: number;
@@ -20,7 +21,7 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
     <div>
       <LibraryInfo currentLibraryId={currentLibraryId} />
       {books.loading && <div className="books-loading">Loading...</div>}
-      {!books.loading && books.error ? <div className="books-error-message">Error: {books.error}</div> : null}
+      {!books.loading && books.error ? <div className="books-error-message"><ErrorView error=""/></div> : null}
       {!books.loading && books.books.length ? (
         <div className="libraryDetailsPage">
             <NavLink to={`/libraries/${currentLibraryId}/form`}>
@@ -34,7 +35,7 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
                 ))}
             </section>
         </div>
-        ) : "Library Not Found"} 
+        ) : null } 
     </div>
   )
 }
