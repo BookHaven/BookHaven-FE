@@ -7,11 +7,17 @@ describe('Library Details page', () => {
     })
   
     it('should go to url ending with "/libraries/1"', () => {
-      
+        cy.url().should('include', '/libraries/1')
     })
     
     it('should display an error message when books cannot be fetched', () => {
+        cy.intercept("GET", "https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books", {
+            statusCode: 500,
+            fixture: "books.json"})
+            .as('fetchBooks');
       
+          cy.wait('@fetchBooks')
+          cy.get(".error-message").should('be.visible');
     })
   
     it('should display as loading when fetching books is pending', () => {
