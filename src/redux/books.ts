@@ -34,6 +34,10 @@ interface PostBooksResponse {
   data: Book
 };
 
+interface RemoveBooksResponse {
+  data: number
+};
+
 const initialState: InitialState = {
   loading: false,
   books: [],
@@ -55,6 +59,19 @@ export const postBook = createAsyncThunk('books/postBook', async (parameterObjec
     return response.data;
   } catch (error) {
     throw new Error('Error: Unable to add book');
+  }
+});
+
+export const removeBook = createAsyncThunk('books/removeBook', async (parameterObject: ParameterObject) => {
+  try {
+    const { libraryId, bookId } = parameterObject;
+    // const response = await axios.post(`https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/${libraryId}/books`, { isbn });
+    const response = await axios.post(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books/${bookId}`);
+    
+    console.log(response)
+    return bookId;
+  } catch (error) {
+    throw new Error('Error: Unable to remove book');
   }
 });
 
@@ -82,6 +99,11 @@ export const booksSlice = createSlice({
     })
     builder.addCase(postBook.fulfilled, (state, action: PayloadAction<PostBooksResponse>) => {
       state.books.push(action.payload.data);
+    });
+    builder.addCase(removeBook.fulfilled, (state, action: PayloadAction<RemoveBooksResponse>) => {
+      const index = state.books.findIndex(book => book.id === action.payload.data)
+      // is additional error check needed? test rejected case
+      state.books.splice(index, 1);
     });
   },
 });
