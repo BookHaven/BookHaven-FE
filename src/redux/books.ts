@@ -76,7 +76,6 @@ export const removeBook = createAsyncThunk('books/removeBook', async (parameterO
     const response = await axios.delete(`https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/${libraryId}/books/${bookId}`);
     // const response = await axios.delete(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books/${bookId}`);
     
-    console.log(response)
     return response.data;
   } catch (error) {
     throw new Error('Error: Unable to remove book');
@@ -108,13 +107,17 @@ export const booksSlice = createSlice({
     builder.addCase(postBook.fulfilled, (state, action: PayloadAction<PostBooksResponse>) => {
       state.books.push(action.payload.data);
     });
+    builder.addCase(removeBook.pending, (state) => {
+      state.loading = true;
+    })
     builder.addCase(removeBook.fulfilled, (state, action: PayloadAction<RemoveBooksResponse>) => {
-      console.log(action.payload.data)
       const index = state.books.findIndex(book => book.id === action.payload.data.bookId)
-      // is additional error check needed? test rejected case -> Yes it's needed
       state.books.splice(index, 1);
     });
-    // add pending & requested
+    builder.addCase(removeBook.rejected, (state, action) => {
+      state.loading = false;
+      state.error = action.error.message || "Error: Unable to remove book";
+    })
   },
 });
 
