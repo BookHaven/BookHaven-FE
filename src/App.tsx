@@ -7,11 +7,12 @@ import { LandingView } from './react-components/LandingView';
 import { BookDetailsView } from './react-components/BookDetailsView';
 import { FormView } from './react-components/Form';
 import { ErrorView } from './react-components/ErrorView';
+import Header from './react-components/Header';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <h1 className="header">Book Haven</h1>
+      <Header />
       <Switch>
         <Route exact path='/' component={LandingView}/>
         <Route exact path='/libraries' component={LibraryIndexView} />
