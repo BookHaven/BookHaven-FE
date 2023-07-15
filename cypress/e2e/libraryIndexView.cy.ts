@@ -41,6 +41,19 @@ describe('Library Index page', () => {
       .url().should('eq', 'http://localhost:3000/libraries/4')
   })
 
+  it('Displays an error message if a server error occurs (500 level error)', () => {
+    cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries', {
+      statusCode: 500,
+      body: {
+        message: 'Internal Server Error'
+      }
+    }).as('getLibraries')
+
+    cy.visit('http://localhost:3000/libraries')
+      .wait('@getLibraries')
+    cy.get('.error-message').should('have.text', 'We seem to be having technical issues. Please try again later.')
+  })
+
   it.skip('User can click the Header logo to return to the Landing page', () => {
     // TO DO: After styling, finish assertion
   })
