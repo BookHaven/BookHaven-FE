@@ -19,17 +19,17 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
   return (
     <div>
       <LibraryInfo id={currentLibraryId} />
-      {books.loading && <div>Loading...</div>}
-      {!books.loading && books.error ? <div>Error: {books.error}</div> : null}
+      {books.loading && <div className="books-loading">Loading...</div>}
+      {!books.loading && books.error ? <div className="books-error-message">Error: {books.error}</div> : null}
       {!books.loading && books.books.length ? (
         <div className="libraryDetailsPage">
             <NavLink to={`/libraries/${currentLibraryId}/form`}>
               <button className="addBookBtn">Add a Book</button>
             </NavLink>
-            <section>
+            <section className="books-section">
               {books.books.map(book=> (
                 <NavLink to={`/libraries/${currentLibraryId}/books/${book.id}`}>
-                  <article key={book.id}>{book.attributes.book_image}</article>
+                  <article key={book.id} className="book">{book.attributes.book_image}</article>
                 </NavLink>
                 ))}
             </section>
