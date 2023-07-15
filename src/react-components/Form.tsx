@@ -39,7 +39,7 @@ export const FormView = ({ currentLibraryId }: FormViewProps) => {
 
     return (
         <div className="form-page">
-            <LibraryInfo id={currentLibraryId}/>
+            <LibraryInfo currentLibraryId={currentLibraryId}/>
             <button className="return-to-books-btn" onClick={returnToBooks}>Return</button>
             <form>  
                 <h2>Add a book to this library</h2>  

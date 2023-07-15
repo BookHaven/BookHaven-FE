@@ -1,4 +1,6 @@
-import { useAppSelector } from '../redux/store';
+import { useAppSelector, useAppDispatch } from '../redux/store';
+import { fetchLibraries } from '../redux/libraryIndex';
+import { useEffect } from 'react';
 
 interface Library {
     id: number;
@@ -9,20 +11,28 @@ interface Library {
             street: string;
             city: string;
             state: string;
-            zip: number;
-        };
+            zip: string;
+        }
+        location: {
+            lat: number;
+            lon: number;
+        },
+        book_count: number;
     };
 }
 
-interface Props {
-    id: number;
+interface LibraryInfoProp {
+    currentLibraryId: number;
 }
 
-export const LibraryInfo: React.FC<Props> = ({ id }) => {
+export const LibraryInfo = ({ currentLibraryId }: LibraryInfoProp) => {
     const libraryIndex = useAppSelector((state) => state.libraryIndex);
-    const library: Library | undefined = libraryIndex.libraries.find((library) => library.id === id);
-
-    console.log(id);
+    const library = libraryIndex.libraries.find((library) => library.id === currentLibraryId);
+    const dispatch = useAppDispatch();
+  
+    useEffect(() => {
+        dispatch(fetchLibraries())
+    }, [])
 
     if (!library) {
         return <div>Loading...</div>;
