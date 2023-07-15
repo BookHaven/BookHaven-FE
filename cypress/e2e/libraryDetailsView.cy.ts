@@ -48,6 +48,7 @@ describe('Library Details page', () => {
     })
     
     it('should display an add book button which takes users to a form page', () => {
-      
+        cy.get('.libraryDetailsPage').find('.addBookBtn').click()
+        cy.url().should('include', '/form')
     })
 })
