@@ -30,9 +30,23 @@ describe('Book Details page', () => {
     cy.get('.books-title').should('have.text', 'One Hundred Years of Solitude')
   })
 
-  it('Displays an error message if the URL isn\'t found', () => {
+  it('Displays an error message if the URL isn\'t found (400 level error)', () => {
     cy.visit('http://localhost:3000/libraries/1/books/2')
+      .wait('@getBooks')
     cy.get('.error-message').should('have.text', '404: Page not found. Please click the logo above to return home.')
+  })
+
+  it('Displays a different error message if a server error occurs (500 level error)', () => {
+    cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books', {
+      statusCode: 500,
+      body: {
+        message: 'Internal Server Error'
+      }
+    }).as('getBooks')
+
+    cy.visit('http://localhost:3000/libraries/1/books/2')
+      .wait('@getBooks')
+    cy.get('.error-message').should('have.text', 'We seem to be having technical issues. Please try again later.')
   })
 
   it('Includes a button to go back to the corresponding Library Details page', () => {
@@ -42,7 +56,6 @@ describe('Book Details page', () => {
   })
 
   // TO DO:
-  // User can click the Header logo to return to the Libraries Index page
-  // Add delete flow testing for Check out book button
-  // Add delete flow testing for Book not here button
+  // User can click the Header logo to return to the Landing page
+  // Add delete flow testing for Remove Book button
 })
