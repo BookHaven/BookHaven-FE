@@ -1,0 +1,80 @@
+{ "data": [
+  {
+    "id": 3,
+    "type": "book",
+    "attributes": {
+        "title": "One Hundred Years of Solitude",
+        "author": "Gabriel Garcia Marquez",
+        "isbn": "9780060883287",
+        "book_image": "http://books.google.com/books/content?id=Rtk8PgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+        "description": "One Hundred Years of Solitude tells the story of the rise and fall, birth and death of the mythical town of Macondo through the history of the Buendía family. Inventive, amusing, magnetic, sad, and alive with unforgettable men and women -- brimming with truth, compassion, and a lyrical magic that strikes the soul -- this novel is a masterpiece in the art of fiction.",
+        "genre": "Fiction",
+        "library_id": 1
+    }
+  },
+  {
+    "id": 5,
+    "type": "book",
+    "attributes": {
+        "title": "Lilac Girls",
+        "author": "Martha Hall Kelly",
+        "isbn": "9781101883082",
+        "book_image": "http://books.google.com/books/content?id=wg0dDgAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        "description": "NEW YORK TIMES BESTSELLER • One million copies sold! Inspired by the life of a real World War II heroine, this remarkable debut novel reveals the power of unsung women to change history in their quest for love, freedom, and second chances. “Extremely moving and memorable . . . This impressive debut should appeal strongly to historical fiction readers and to book clubs that adored Kristin Hannah’s The Nightingale and Anthony Doerr’s All the Light We Cannot See.",
+        "genre": "Fiction",
+        "library_id": 1
+    }
+  },
+  {
+    "id": 7,
+    "type": "book",
+    "attributes": {
+        "title": "The Lord of the Rings",
+        "author": "John Ronald Reuel Tolkien",
+        "isbn": "9780547928210",
+        "book_image": "http://books.google.com/books/content?id=AY9yyAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+        "description": "In anticipation of the new film The Hobbit, opening in December 2012, comes a reissue of the first book in The Lord of the Rings series. Reissue. 200,000 first printing.",
+        "genre": "Fiction",
+        "library_id": 1
+    }
+  },
+  {
+    "id": 9,
+    "type": "book",
+    "attributes": {
+        "title": "Murder on the Orient Express",
+        "author": "Agatha Christie",
+        "isbn": "9780062073495",
+        "book_image": "http://books.google.com/books/content?id=2DsUkgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api",
+        "description": "Just after midnight, the famous Orient Express is stopped in its tracks by a snowdrift. By morning, the millionaire Samuel Edward Ratchett lies dead in his compartment, stabbed a dozen times, his door locked from the inside. One of his fellow passengers must be the murderer. Isolated by the storm, detective Hercule Poirot must find the killer among a dozen of the dead man's enemies, before the murderer decides to strike again.",
+        "genre": "Fiction",
+        "library_id": 1
+    }
+  },
+  {
+    "id": 11,
+    "type": "book",
+    "attributes": {
+        "title": "Fahrenheit 451",
+        "author": "Ray Bradbury",
+        "isbn": "9781451673319",
+        "book_image": "http://books.google.com/books/content?id=y3CyRurE7P4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        "description": "A totalitarian regime has ordered all books to be destroyed, but one of the book burners, Guy Montag, suddenly realizes their merit.",
+        "genre": "Ray Bradbury",
+        "library_id": 2
+    }
+  },
+  {
+    "id": 13,
+    "type": "book",
+    "attributes": {
+        "title": "Wizard's First Rule",
+        "author": "Terry Goodkind",
+        "isbn": "312857055",
+        "book_image": "http://books.google.com/books/content?id=w7jZ-nfXRe0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+        "description": "An unearthly adversary descends on an idyllic fantasy world, corrupting magic against good and slaughtering innocents, and only a single man can stop him",
+        "genre": "Fiction",
+        "library_id": 2
+    }
+  }
+]}
