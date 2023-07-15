@@ -33,13 +33,18 @@ export const FormView = ({ currentLibraryId }: FormViewProps) => {
       history.push(`/libraries/${currentLibraryId}`);
     }
 
+    const returnToBooks = () => {
+      history.push(`/libraries/${currentLibraryId}`);
+    }
+
     return (
         <div>
             <LibraryInfo id={currentLibraryId}/>
+            <button className="return-to-books-btn" onClick={returnToBooks}>Return</button>
             <form>  
                 <h2>Add a book to this library</h2>  
                 <input type="text" placeholder='ISBN' value={isbn.isbn} onChange={handleIsbnChange}/>
-                <button onClick={handleClick}>Add Book</button>
+                <button className="add-book-btn" onClick={handleClick}>Add Book</button>
             </form>
         </div>
     )
