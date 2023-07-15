@@ -1,17 +1,4 @@
-{ "data": [ 
-  {
-    "id": 1,
-    "type": "book",
-    "attributes": {
-        "title": "Imbibe!",
-        "author": "David Wondrich",
-        "isbn": "9780399532870",
-        "book_image": "http://books.google.com/books/content?id=IV3s-NUYnfEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-        "description": "An informative, anecdotal history of classic American cocktails pays tribute to Jerry Thomas, the father of the American bar, in a study that includes a host of mixology lore, legends, trivia, and more than one hundred recipes for punches, cocktails, sours, fizzes, toddies, slings, and other drinks.",
-        "genre": "Cooking",
-        "library_id": 1
-    }
-  },
+{ "data": [
   {
     "id": 3,
     "type": "book",
