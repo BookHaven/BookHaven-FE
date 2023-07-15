@@ -10,3 +10,7 @@ h4 {
   font-family: 'Grandstander', cursive;
   font-weight: 600;
 }
+
+.App {
+  min-height: 100vh;
+} 
