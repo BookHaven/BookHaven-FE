@@ -17,7 +17,7 @@ describe('Library Details page', () => {
     })
 
     it('should instruct users to add a book', () => {
-        
+        cy.contains("h2", "Add a book to this library");
     })
 
     it('should have an input field that takes in an ISBN', () => {
