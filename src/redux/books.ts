@@ -11,13 +11,13 @@ interface Book {
   id: number, 
   type: string, 
   attributes: {
-   isbn: string, 
-   book_image: string, 
-   description: string, 
-   title: string, 
-   author: string, 
-   genre: string,
-   library_id: number
+    title: string;
+    author: string;
+    isbn: string;
+    book_image: string;
+    description: string;
+    genre: string;
+    library_id: number;
   }
 };
 

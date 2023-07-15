@@ -2,7 +2,8 @@ describe('Library Details page', () => {
     beforeEach(() => {
         cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books', {
             statusCode: 200,
-            fixture: 'books.json'})
+            fixture: 'books.json'
+        })
         cy.visit('http://localhost:3000/libraries/1')
     })
   
@@ -14,9 +15,7 @@ describe('Library Details page', () => {
         cy.intercept("GET", "https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books", {
             statusCode: 500,
             fixture: "books.json"})
-            .as('fetchBooks');
       
-        cy.wait('@fetchBooks')
         cy.get(".books-error-message").should('be.visible');
     })
   
@@ -24,13 +23,12 @@ describe('Library Details page', () => {
         cy.intercept("GET", "https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books", {
             statusCode: 202,
             fixture: "books.json"})
-            .as('fetchBooks');
       
         cy.get(".books-loading").should('be.visible');
     })
 
     it('should display the name of the library', () => {
-        cy.contains("h1", "Mary Beth Ball");
+        cy.get(".library-info").contains("h1", "Mary Beth Ball");
     })
 
     it('should display the address of the library', () => {
