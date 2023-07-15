@@ -14,22 +14,6 @@ describe('Book Details page', () => {
       .wait('@getLibraries')
   });
 
-  // it('User can click on a specific book on the Library Details page to navigate to a Book Details page', () => {
-  //   cy.get('.book-link').first().click()
-  //   cy.url().should('eq', 'http://localhost:3000/libraries/1/books/1')
-
-  //   cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books', {
-  //     statusCode: 200,
-  //     fixture: 'books'
-  //   }).as('getBooks')
-  //   cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries', {
-  //     statusCode: 200,
-  //     fixture: 'libraries'
-  //   }).as('getLibraries')
-  //   cy.wait('@getBooks')
-  //     .wait('@getLibraries')
-  // })
-
   it('Displays details about a specific book', () => {
     cy.get('.books-image').should('have.attr', 'src', 'http://books.google.com/books/content?id=IV3s-NUYnfEC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api')
       .get('.books-image').should('have.attr', 'alt', 'Book cover')
@@ -57,17 +41,8 @@ describe('Book Details page', () => {
     cy.wait('@getBooks')
   })
 
-  it.skip('', () => {
-    
-  })
-
-  it.skip('', () => {
-    
-  })
-
   // TO DO:
   // User can click the Header logo to return to the Libraries Index page
   // Add delete flow testing for Check out book button
   // Add delete flow testing for Book not here button
-
 })

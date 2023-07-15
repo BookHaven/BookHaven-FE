@@ -34,8 +34,8 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
             <p className='books-desc'>{bookToDisplay.attributes.description}</p>
           </div>
           <div className="books-buttons-container">
-            <button>Checkout Book</button>
-            <button>Book Not Here</button>
+            {/* <button>Checkout Book</button> */}
+            {/* <button>Book Not Here</button> */}
             <NavLink to={`/libraries/${currentLibraryId}`}>
               <button className="books-return">Return to Library</button>
             </NavLink>
