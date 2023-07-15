@@ -3,6 +3,7 @@ import { useAppSelector, useAppDispatch } from '../redux/store';
 import { fetchLibraries } from '../redux/libraryIndex';
 import { SingleLibrary } from './SingleLibrary';
 import { ErrorView } from './ErrorView';
+import '../styles/libraryIndexView.css'
 
 export const LibraryIndexView = () => {
   const libraryIndex = useAppSelector(state => state.libraryIndex);
@@ -26,7 +27,7 @@ export const LibraryIndexView = () => {
 
   return (
     <div>
-      <h2>All Libraries</h2>
+      <h2 className='libraries-title'>All Libraries</h2>
       {libraryIndex.loading && <div>Loading...</div>}
       {!libraryIndex.loading && libraryIndex.error ? <div><ErrorView error={libraryIndex.error} /></div> : null}
       {!libraryIndex.loading && libraryIndex.libraries.length ?
