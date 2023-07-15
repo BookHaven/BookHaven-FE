@@ -1,4 +1,4 @@
-[
+{ "data": [
   {
       "id": 1,
       "type": "library",
@@ -71,4 +71,4 @@
           "book_count": 7
       }
   }
-]
+]}
