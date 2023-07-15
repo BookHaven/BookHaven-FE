@@ -1,7 +1,12 @@
-.books-container {
+.books-top-container,
+.books-bottom-container {
   display: flex;
   justify-content: space-between;
-  margin: 4rem;
+  margin: 4rem 10rem;
+}
+
+.books-bottom-container {
+  flex-direction: column;
 }
 
 .books-details {
@@ -19,11 +24,8 @@
   width: 128px;
 }
 
-.books-buttons-container {
-  width: 12rem;
-}
-
-.books-buttons-container > button {
+.books-remove {
   margin: 0.5rem;
+  height: fit-content;
   width: 10rem;
 }

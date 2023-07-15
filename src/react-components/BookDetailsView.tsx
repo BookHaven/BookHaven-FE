@@ -23,22 +23,27 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
   if (bookToDisplay && libraryToDisplay) {
     renderWhenFulfilled =
       <>
-        <div className="books-container">
+        <div className="books-top-container">
           <img className="books-image" src={`${bookToDisplay.attributes.book_image}`} alt="Book cover"/>
           <div className="books-details">
-            <p className="books-library-name">Library: {libraryToDisplay.attributes.name}</p>
+            <NavLink to={`/libraries/${currentLibraryId}`}>
+              <p className="books-library-name">{libraryToDisplay.attributes.name}</p>
+            </NavLink>
             <h1 className='books-title'>{bookToDisplay.attributes.title}</h1>
             <h3 className='books-author'>{bookToDisplay.attributes.author}</h3>
-            <p className='books-genre-isbn'>{bookToDisplay.attributes.genre} • ISBN {bookToDisplay.attributes.isbn}</p>
+            <div className="books-isbn-genre-container">
+              <p className='books-isbn'>ISBN: {bookToDisplay.attributes.isbn}</p>
+              <p className='books-genre'>Genre: {bookToDisplay.attributes.genre}</p>
+            </div>
+          </div>
+          <div className='tooltip'>
+            <button className='books-remove tooltip'>Remove Book</button>
+            <span className='tooltiptext'>Remove book from this library's inventory</span>
+          </div>
+        </div>
+        <div className='books-bottom-container'>
             <h3>About</h3>
-            <p className='books-desc'>{bookToDisplay.attributes.description}</p>
-          </div>
-          <div className="books-buttons-container">
-            {/* <button>Remove Book</button> */}
-            <NavLink to={`/libraries/${currentLibraryId}`}>
-              <button className="books-return">Return to Library</button>
-            </NavLink>
-          </div>
+            <p className='books-desc-text'>{bookToDisplay.attributes.description}</p>
         </div>
       </>
   };
