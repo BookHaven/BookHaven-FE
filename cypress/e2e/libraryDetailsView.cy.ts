@@ -32,8 +32,8 @@ describe('Library Details page', () => {
     })
 
     it('should display the address of the library', () => {
-        cy.get('.street').should('have.string', '1748 S. Washington Steet');
-        cy.get('.city-state-zip').should('have.string', 'Denver, CO 80210');
+        cy.get('.library-info').get('.street').should('contain.text', '1748 S. Washington Steet');
+        cy.get('.library-info').get('.city-state-zip').should('contain.text', 'Denver, CO 80210');
     })
 
     it('should display a list of books for the library', () => {
