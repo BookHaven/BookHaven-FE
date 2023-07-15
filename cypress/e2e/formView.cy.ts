@@ -15,4 +15,20 @@ describe('Library Details page', () => {
         cy.get('.street').should('have.string', '1748 S. Washington Steet');
         cy.get('.city-state-zip').should('have.string', 'Denver, CO 80210');
     })
+
+    it('should instruct users to add a book', () => {
+        
+    })
+
+    it('should have an input field that takes in an ISBN', () => {
+        
+    })
+
+    it('should direct users to library details page once "Add Book" button is clicked', () => {
+        
+    })
+
+    it('should direct users to library details page when "Return" button is clicked', () => {
+        
+    })
 })
