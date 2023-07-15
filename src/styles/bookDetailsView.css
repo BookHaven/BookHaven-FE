@@ -1,10 +1,18 @@
-.books-container {
+.books-top-container,
+.books-bottom-container {
   display: flex;
   justify-content: space-between;
-  margin: 4rem;
+  margin: 4rem 10rem;
+}
+
+.books-bottom-container {
+  flex-direction: column;
 }
 
 .books-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   max-width: 60%;
   padding-left: 2rem;
   text-align: left;
@@ -12,6 +20,7 @@
 
 .books-library-name {
   margin-top: 0;
+  font-weight: bold
 }
 
 .books-image {
@@ -19,11 +28,54 @@
   width: 128px;
 }
 
-.books-buttons-container {
-  width: 12rem;
+.books-title {
+  margin-bottom: 0;
 }
 
-.books-buttons-container > button {
+.books-title,
+.books-author {
+  margin-top: 0.5rem;
+}
+
+.books-isbn, 
+.books-genre {
+  margin: 0.5rem 0 0 0;
+}
+
+.books-remove-button {
   margin: 0.5rem;
   width: 10rem;
+  height: 2rem;
+  background-color: white;
+  color: #684526;
+  text-align: center;
+  padding: 0.25rem;
+  border: 1px solid #684526;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 8rem;
+  background-color: #684526;
+  color: white;
+  text-align: center;
+  padding: 0.25rem;
+  border: 1px solid #684526;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -4rem; /* Use half of the width, to center the tooltip */
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
 }

@@ -1,4 +1,5 @@
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import '../styles/singleLibrary.css'
 
 interface SingleLibraryProps {
   id: number,
@@ -7,7 +8,7 @@ interface SingleLibraryProps {
     street: string,
     city: string,
     state: string,
-    zip: number
+    zip: string
   },
   bookCount: number
 };
@@ -17,13 +18,15 @@ export const SingleLibrary = (props: SingleLibraryProps) => {
 
   return (
     <div className="single-library-container">
-      <Link to={`/libraries/${id}`} className='single-library-link'>{name}</Link>
+      <NavLink to={`/libraries/${id}`} className='single-library-link'
+        style={{ color: 'black', textDecoration: 'none'}}>{name}
+      </NavLink>
       <p className="single-library-address">
         {address.street}<br/>
         {address.city}, {address.state} {address.zip}
       </p>
       <p className="single-library-count">{`${bookCount}`}</p>
-      <p>books in this library</p>
+      <p className="single-library-count-message">books in this library</p>
     </div>
   )
 };
