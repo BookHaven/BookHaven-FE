@@ -6,11 +6,35 @@ describe('Library Details page', () => {
         .visit('http://localhost:3000/libraries/1')
     })
   
-    it('', () => {
+    it('should go to url ending with "/libraries/1"', () => {
+      
+    })
+    
+    it('should display an error message when books cannot be fetched', () => {
       
     })
   
-    it('', () => {
+    it('should display as loading when fetching books is pending', () => {
+      
+    })
+
+    it('should display the name of the library', () => {
+      
+    })
+
+    it('should display the address of the library', () => {
+      
+    })
+
+    it('should display a list of books for the library', () => {
+      
+    })
+
+    it('should display each book as a link to the book details page', () => {
+      
+    })
+    
+    it('should display an add book button which takes users to a form page', () => {
       
     })
 })
