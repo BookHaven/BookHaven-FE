@@ -17,7 +17,7 @@ describe('Library Details page', () => {
             .as('fetchBooks');
       
           cy.wait('@fetchBooks')
-          cy.get(".error-message").should('be.visible');
+          cy.get(".books-error-message").should('be.visible');
     })
   
     it('should display as loading when fetching books is pending', () => {
