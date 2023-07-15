@@ -1,0 +1,74 @@
+[
+  {
+      "id": 1,
+      "type": "library",
+      "attributes": {
+          "name": "Mary Beth Ball",
+          "address": {
+              "street": "1748 S. Washington Steet",
+              "city": "Denver",
+              "state": "CO",
+              "zip": "80210"
+          },
+          "location": {
+              "lat": 39.684831,
+              "lon": -104.979239
+          },
+          "book_count": 11
+      }
+  },
+  {
+      "id": 2,
+      "type": "library",
+      "attributes": {
+          "name": "Berly's Books",
+          "address": {
+              "street": "311 S. Race Street",
+              "city": "Denver",
+              "state": "CO",
+              "zip": "80209"
+          },
+          "location": {
+              "lat": 39.710845,
+              "lon": -104.964075
+          },
+          "book_count": 10
+      }
+  },
+  {
+      "id": 3,
+      "type": "library",
+      "attributes": {
+          "name": "Joe Bobson's Library",
+          "address": {
+              "street": "8743 Princeton Street",
+              "city": "Westminster",
+              "state": "CO",
+              "zip": "80031"
+          },
+          "location": {
+              "lat": 39.855093,
+              "lon": -105.041732
+          },
+          "book_count": 4
+      }
+  },
+  {
+      "id": 4,
+      "type": "library",
+      "attributes": {
+          "name": "Karrey Van Sky",
+          "address": {
+              "street": "1129 Lilac Street",
+              "city": "Broomfield",
+              "state": "CO",
+              "zip": "80020"
+          },
+          "location": {
+              "lat": 39.932489,
+              "lon": -105.098236
+          },
+          "book_count": 7
+      }
+  }
+]

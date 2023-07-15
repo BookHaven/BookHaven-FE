@@ -5,6 +5,7 @@ import { LibraryDetailsView } from './react-components/libraryDetailsView';
 import { LandingView } from './react-components/LandingView';
 import { BookDetailsView } from './react-components/BookDetailsView';
 import { FormView } from './react-components/Form';
+import { ErrorView } from './react-components/ErrorView';
 
 const App: React.FC = () => {
   return (
@@ -18,7 +19,7 @@ const App: React.FC = () => {
           return <LibraryDetailsView currentLibraryId={currentLibrary}/> }}
         />
 
-        <Route path='/libraries/:id/form' render={({match}) => {
+        <Route exact path='/libraries/:id/form' render={({match}) => {
           const currentLibrary = parseInt(match.params.id);
           return <FormView currentLibraryId={currentLibrary}/> }}/>
 
@@ -27,9 +28,10 @@ const App: React.FC = () => {
           const currentLibrary = parseInt(match.params.id);
           return <BookDetailsView currentBookId={currentBook} currentLibraryId={currentLibrary}/> }}
         />
+        <Route path='/*' render={() => <ErrorView error=""/> }/>
       </Switch>
     </div>
   )
-}
+};
 
 export default App;
