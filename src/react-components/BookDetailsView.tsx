@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../redux/store';
-import { NavLink } from 'react-router-dom';
-import { fetchBooks } from "../redux/books";
+import { NavLink, useHistory } from 'react-router-dom';
+import { fetchBooks, removeBook } from "../redux/books";
 import { fetchLibraries } from '../redux/libraryIndex';
 import { ErrorView } from './ErrorView';
 import '../styles/bookDetailsView.css';
@@ -9,16 +9,28 @@ import '../styles/bookDetailsView.css';
 export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBookId: number, currentLibraryId: number}) => {
   const booksDetails = useAppSelector(state => state.books);
   const libraryDetails = useAppSelector(state => state.libraryIndex);
+  const history = useHistory();
   const dispatch = useAppDispatch();
   let renderWhenFulfilled, toRender;
 
-  useEffect(() => {
-    dispatch(fetchBooks(currentLibraryId));
-    dispatch(fetchLibraries());
-  }, []);
-
   const bookToDisplay = booksDetails.books.find(book => book.id === currentBookId);
   const libraryToDisplay = libraryDetails.libraries.find(library => library.id === currentLibraryId);
+
+  const parameterObject = {
+    libraryId: currentLibraryId,
+    bookId: currentBookId
+  };
+
+  const handleRemove = (event: any) => {
+    event.preventDefault();
+    dispatch(removeBook(parameterObject));
+    history.push(`/libraries/${currentLibraryId}`);
+  };
+
+  useEffect(() => {
+    dispatch(fetchLibraries());
+    dispatch(fetchBooks(currentLibraryId));
+  }, []);
 
   if (bookToDisplay && libraryToDisplay) {
     renderWhenFulfilled =
@@ -37,7 +49,7 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
             </div>
           </div>
           <div className='tooltip'>
-            <button className='books-remove tooltip'>Remove Book</button>
+            <button className='books-remove tooltip' onClick={handleRemove}>Remove Book</button>
             <span className='tooltiptext'>Remove book from this library's inventory</span>
           </div>
         </div>
