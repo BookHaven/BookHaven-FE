@@ -51,8 +51,10 @@ describe('Book Details page', () => {
     cy.get('.error-message').should('have.text', '404: Page not found. Please click the logo above to return home.')
   })
 
-  it.skip('', () => {
-    
+  it('Includes a button to go back to the corresponding Library Details page', () => {
+    cy.get('.books-return').click()
+    cy.url().should('eq', 'http://localhost:3000/libraries/1')
+    cy.wait('@getBooks')
   })
 
   it.skip('', () => {
@@ -64,7 +66,6 @@ describe('Book Details page', () => {
   })
 
   // TO DO:
-  // Return to Libraries button
   // User can click the Header logo to return to the Libraries Index page
   // Add delete flow testing for Check out book button
   // Add delete flow testing for Book not here button
