@@ -19,7 +19,7 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
   return (
     <div>
       <LibraryInfo id={currentLibraryId} />
-      {books.loading && <div>Loading...</div>}
+      {books.loading && <div className="books-loading">Loading...</div>}
       {!books.loading && books.error ? <div className="books-error-message">Error: {books.error}</div> : null}
       {!books.loading && books.books.length ? (
         <div className="libraryDetailsPage">
