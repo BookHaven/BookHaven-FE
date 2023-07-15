@@ -1,0 +1,35 @@
+.single-library-container,
+.single-library-container p,
+.single-library-container a {
+  background-color: #D1EACF;
+  color: black;
+  text-align: center;
+}
+
+.single-library-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 25rem;
+  height: 12rem;
+  margin: 1rem 1rem;
+  padding: 1.5rem;
+  border-radius: 3rem;
+}
+
+.single-library-link {
+  font-family: 'Grandstander', cursive;
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin-top: 0.75rem;
+}
+
+.single-library-count,
+.single-library-count-message {
+  margin-bottom: 0;
+  font-size: 1.25rem;
+}
+
+.single-library-count-message {
+  margin-top: 0rem;
+}
