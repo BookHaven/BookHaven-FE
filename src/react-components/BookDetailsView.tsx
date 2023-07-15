@@ -10,7 +10,7 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
   const booksDetails = useAppSelector(state => state.books);
   const libraryDetails = useAppSelector(state => state.libraryIndex);
   const dispatch = useAppDispatch();
-  let renderWhenFulfilled;
+  let renderWhenFulfilled, toRender;
 
   useEffect(() => {
     dispatch(fetchBooks(currentLibraryId));
@@ -34,8 +34,7 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
             <p className='books-desc'>{bookToDisplay.attributes.description}</p>
           </div>
           <div className="books-buttons-container">
-            {/* <button>Checkout Book</button> */}
-            {/* <button>Book Not Here</button> */}
+            {/* <button>Remove Book</button> */}
             <NavLink to={`/libraries/${currentLibraryId}`}>
               <button className="books-return">Return to Library</button>
             </NavLink>
@@ -44,11 +43,17 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
       </>
   };
 
+  if (booksDetails.loading) {
+    toRender = <div>Loading...</div>
+  } else if (booksDetails.error || !bookToDisplay) {
+    toRender = <div><ErrorView error={booksDetails.error} /></div>
+  } else if (booksDetails.books.length && bookToDisplay) {
+    toRender = <>{renderWhenFulfilled}</>
+  };
+
   return (
     <div>
-      {booksDetails.loading && <div>Loading...</div>}
-      {!booksDetails.loading && booksDetails.error || !bookToDisplay && <div><ErrorView error={booksDetails.error} /></div>}
-      {!booksDetails.loading && booksDetails.books.length && bookToDisplay && <>{renderWhenFulfilled}</>}
+      {toRender}
     </div>
   );
 };
