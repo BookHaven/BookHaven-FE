@@ -26,10 +26,10 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
             <NavLink to={`/libraries/${currentLibraryId}/form`}>
               <button className="addBookBtn">Add a Book</button>
             </NavLink>
-            <section>
+            <section className="books-section">
               {books.books.map(book=> (
                 <NavLink to={`/libraries/${currentLibraryId}/books/${book.id}`}>
-                  <article key={book.id}>{book.attributes.book_image}</article>
+                  <article key={book.id} className="book">{book.attributes.book_image}</article>
                 </NavLink>
                 ))}
             </section>

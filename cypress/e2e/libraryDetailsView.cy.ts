@@ -39,7 +39,7 @@ describe('Library Details page', () => {
     })
 
     it('should display a list of books for the library', () => {
-      
+        cy.get('.books-section').find('.book').should('have.lengthOf', 7)
     })
 
     it('should display each book as a link to the book details page', () => {
