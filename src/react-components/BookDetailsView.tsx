@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../redux/store';
+import { NavLink } from 'react-router-dom';
 import { fetchBooks } from "../redux/books";
 import { fetchLibraries } from '../redux/libraryIndex';
 import { ErrorView } from './ErrorView';
@@ -9,7 +10,7 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
   const booksDetails = useAppSelector(state => state.books);
   const libraryDetails = useAppSelector(state => state.libraryIndex);
   const dispatch = useAppDispatch();
-  let renderWhenFulfilled;
+  let renderWhenFulfilled, toRender;
 
   useEffect(() => {
     dispatch(fetchBooks(currentLibraryId));
@@ -26,26 +27,33 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
           <img className="books-image" src={`${bookToDisplay.attributes.book_image}`} alt="Book cover"/>
           <div className="books-details">
             <p className="books-library-name">Library: {libraryToDisplay.attributes.name}</p>
-            <h1>{bookToDisplay.attributes.title}</h1>
-            <h3>{bookToDisplay.attributes.author}</h3>
-            <p>{bookToDisplay.attributes.genre} • ISBN {bookToDisplay.attributes.isbn}</p>
+            <h1 className='books-title'>{bookToDisplay.attributes.title}</h1>
+            <h3 className='books-author'>{bookToDisplay.attributes.author}</h3>
+            <p className='books-genre-isbn'>{bookToDisplay.attributes.genre} • ISBN {bookToDisplay.attributes.isbn}</p>
             <h3>About</h3>
-            <p>{bookToDisplay.attributes.description}</p>
+            <p className='books-desc'>{bookToDisplay.attributes.description}</p>
           </div>
           <div className="books-buttons-container">
-            <button>Checkout Book</button>
-            <button>Book Not Here</button>
-            <button>Return to Libraries</button>
+            {/* <button>Remove Book</button> */}
+            <NavLink to={`/libraries/${currentLibraryId}`}>
+              <button className="books-return">Return to Library</button>
+            </NavLink>
           </div>
         </div>
       </>
   };
 
+  if (booksDetails.loading) {
+    toRender = <div>Loading...</div>
+  } else if (booksDetails.error || !bookToDisplay) {
+    toRender = <div><ErrorView error={booksDetails.error} /></div>
+  } else if (booksDetails.books.length && bookToDisplay) {
+    toRender = <>{renderWhenFulfilled}</>
+  };
+
   return (
     <div>
-      {booksDetails.loading && <div>Loading...</div>}
-      {!booksDetails.loading && booksDetails.error || !bookToDisplay && <div><ErrorView error={booksDetails.error} /></div>}
-      {!booksDetails.loading && booksDetails.books.length && bookToDisplay && <>{renderWhenFulfilled}</>}
+      {toRender}
     </div>
   );
 };

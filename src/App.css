@@ -1,3 +1,12 @@
 * {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Grandstander', cursive;
+  font-weight: 600;
 }
