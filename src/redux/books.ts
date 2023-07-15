@@ -21,21 +21,29 @@ interface Book {
   }
 };
 
-interface ParameterObject {
-  libraryId: number,
-  isbn: string
-};
-
 interface GetBooksResponse {
   data: Book[]
+};
+
+interface PostBooksRequest {
+  libraryId: number,
+  isbn: string
 };
 
 interface PostBooksResponse {
   data: Book
 };
 
+interface RemoveBooksRequest {
+  libraryId: number,
+  bookId: number
+};
+
 interface RemoveBooksResponse {
-  data: number
+  data: {
+    bookId: number,
+    detail: string
+  }
 };
 
 const initialState: InitialState = {
@@ -46,30 +54,30 @@ const initialState: InitialState = {
 
 export const fetchBooks = createAsyncThunk('books/fetchBooks', (libraryId: number) => {
   return axios 
-    // .get(`https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/${libraryId}/books`)
-    .get(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books`)
+    .get(`https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/${libraryId}/books`)
+    // .get(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books`)
     .then(response => response.data)
 });
 
-export const postBook = createAsyncThunk('books/postBook', async (parameterObject: ParameterObject) => {
+export const postBook = createAsyncThunk('books/postBook', async (parameterObject: PostBooksRequest) => {
   try {
     const { libraryId, isbn } = parameterObject;
-    // const response = await axios.post(`https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/${libraryId}/books`, { isbn });
-    const response = await axios.post(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books`, { isbn });
+    const response = await axios.post(`https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/${libraryId}/books`, { isbn });
+    // const response = await axios.post(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books`, { isbn });
     return response.data;
   } catch (error) {
     throw new Error('Error: Unable to add book');
   }
 });
 
-export const removeBook = createAsyncThunk('books/removeBook', async (parameterObject: ParameterObject) => {
+export const removeBook = createAsyncThunk('books/removeBook', async (parameterObject: RemoveBooksRequest) => {
   try {
     const { libraryId, bookId } = parameterObject;
-    // const response = await axios.post(`https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/${libraryId}/books`, { isbn });
-    const response = await axios.post(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books/${bookId}`);
+    const response = await axios.delete(`https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/${libraryId}/books/${bookId}`);
+    // const response = await axios.delete(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books/${bookId}`);
     
     console.log(response)
-    return bookId;
+    return response.data;
   } catch (error) {
     throw new Error('Error: Unable to remove book');
   }
@@ -101,12 +109,13 @@ export const booksSlice = createSlice({
       state.books.push(action.payload.data);
     });
     builder.addCase(removeBook.fulfilled, (state, action: PayloadAction<RemoveBooksResponse>) => {
-      const index = state.books.findIndex(book => book.id === action.payload.data)
-      // is additional error check needed? test rejected case
+      console.log(action.payload.data)
+      const index = state.books.findIndex(book => book.id === action.payload.data.bookId)
+      // is additional error check needed? test rejected case -> Yes it's needed
       state.books.splice(index, 1);
     });
+    // add pending & requested
   },
 });
 
 export default booksSlice.reducer;
-// export const { addBook, removeBook } = booksSlice.actions;
