@@ -27,11 +27,13 @@
         height: 95%;
         box-shadow: 10px 10px 10px rgba(0,0,0,0.75);
         opacity: 0.9;
+        transition: all .3s ease-in-out;
     }
 
     .book:hover {
-        box-shadow: 20px 20px 20px rgba(0,0,0,0.75);
-        opacity: 1;
+       cursor: pointer;
+        transform: rotateY(-28deg) rotateZ(-2deg) scale(1.02);
+        box-shadow: 10px 3px 2px rgba(196, 193, 193, 0.75), 20px 8px 10px rgba(96, 94, 94, 0.75);
     }
 
     .books-section {
@@ -65,7 +67,6 @@
 
 .addBookBtn:hover {
     background-color: rgb(254, 225, 171);
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.75);
 }
 
 .hide-form-btn {
