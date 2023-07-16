@@ -1,5 +1,7 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
+import { useState } from "react";
+import { useAppSelector } from '../redux/store';
 
 interface InitialState {
   loading: boolean,
@@ -57,6 +59,9 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', (libraryId: numbe
     .get(`https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/${libraryId}/books`)
     // .get(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books`)
     .then(response => response.data)
+    .catch(error => {
+      throw new Error(useAppSelector(state => state.books.error = error.message))
+    });
 });
 
 export const postBook = createAsyncThunk('books/postBook', async (parameterObject: PostBooksRequest) => {
