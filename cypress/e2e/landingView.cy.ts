@@ -7,7 +7,7 @@ describe('Landing page', () => {
     cy.get('.landing-title').should('have.text', 'Find a Book, Share a Book')
     cy.get('.landing-desc').should('have.text', 'BookHaven brings together book lovers and book sharers. Find a book you want to read, and borrow it from a library near you.')
     cy.get('.landing-button').should('have.text', 'See All Libraries')
-    cy.get('.landing-button').should('have.attr', 'href', '/libraries')
+    cy.get('.landing-button-link').should('have.attr', 'href', '/libraries')
     cy.get('.library-image').should('have.attr', 'src', '/library.png')
     cy.get('.library-image').should('have.attr', 'alt', 'Free Library')
     cy.get('.grass-image').should('have.attr', 'src', '/grass.png')
