@@ -11,8 +11,16 @@ interface LibraryDetailsViewProps {
 
 export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps) => {
   const books = useAppSelector(state => state.books);
+  const libraryDetails = useAppSelector(state => state.libraryIndex);
   const dispatch = useAppDispatch();
-  
+  let errorProp;
+
+  if (libraryDetails.error) {
+    errorProp = libraryDetails.error
+  } else if (books.error) {
+    errorProp = books.error
+  };
+
   useEffect(() => {
     dispatch(fetchBooks(currentLibraryId))
   }, [])
@@ -21,8 +29,8 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
     <div>
       <LibraryInfo currentLibraryId={currentLibraryId} />
       {books.loading && <div className="books-loading">Loading...</div>}
-      {!books.loading && books.error ? <div className="books-error-message"><ErrorView error=""/></div> : null}
-      {!books.loading && books.books.length ? (
+      {!books.loading && errorProp ? <div className="books-error-message"><ErrorView error={errorProp}/></div> : null}
+      {!books.loading && books.books.length && !errorProp ? (
         <div className="libraryDetailsPage">
             <NavLink to={`/libraries/${currentLibraryId}/form`}>
               <button className="addBookBtn">Add a Book</button>
