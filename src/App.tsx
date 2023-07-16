@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import './App.css';
 import { LibraryIndexView } from './react-components/libraryIndexView';
 import { LibraryDetailsView } from './react-components/libraryDetailsView';
 import { LandingView } from './react-components/LandingView';
 import { BookDetailsView } from './react-components/BookDetailsView';
 import { ErrorView } from './react-components/ErrorView';
 import Header from './react-components/Header';
+import './App.css';
 
 const App: React.FC = () => {
   return (
