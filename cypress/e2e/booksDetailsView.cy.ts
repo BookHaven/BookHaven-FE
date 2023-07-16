@@ -70,7 +70,7 @@ describe('Book Details page', () => {
       .get('.deletebtn').click()
     cy.url().should('eq', 'http://localhost:3000/libraries/1')
       .wait('@booksAfterSuccessfulDelete')
-    cy.get('.books-section').children().should('have.length', 4)
+    cy.get('.books-section').children().should('not.include.text', 'Imbibe')
   })
 
   it('User can click a button to remove this book from this library, and decide to cancel', () => {
