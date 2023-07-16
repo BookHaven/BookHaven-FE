@@ -13,12 +13,13 @@
         font-size: 0.7em;
         padding-left: 0em;
         padding-right: 0em;
+        margin-top: 0.5em;
     }
 }
 
 @media (min-width: 768px) {
     header {
-        padding: 16px 48px;
+        padding: 16px 15px;
     }
 
     .bookhaven-logo {
@@ -29,6 +30,7 @@
     .return-to-libraries-btn {
         height: 3em;
         width: 12em;
+        margin-top: 1em;
     }
 }
   
