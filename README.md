@@ -9,11 +9,11 @@
 </div>
 <br>
   <p align="center">
-    BookHaven is a web application built for the Turing School of Software and Design's Mod 4 Capstone project. </br>
-    Read more about project requirements <a href=project-requirements>here</a>.
+    BookHaven is a full-stack web application built for the Turing School of Software and Design's Mod 4 Capstone project. </br>
+    Read more about project requirements <a href='https://mod4.turing.edu/projects/capstone/'>here</a>.
     <br />
     <br />
-    Check out our <a href='https://the-book-haven.vercel.app'>deployed website</a>!
+    <strong>Check out our <a href='https://the-book-haven.vercel.app'>deployed website</a>!</strong>
   </p>
 
 
@@ -21,15 +21,22 @@
     <summary>Table of Contents</summary>
     <ol>
       <li>
-        <a href="#about">About The Project</a>
+        <a href="#about-the-project">About The Project</a>
         <ul>
           <li><a href="#built-with">Built With</a></li>
         </ul>
       </li>
-      <li><a href="#screenshots">Screenshots</a></li>
+      <li><a href="#preview">Preview</a></li>
       <li><a href="#getting-started">Getting Started</a></li>
-      <li><a href="#testing">Testing</a></li>
+        <ul>
+          <li><a href="#installation">Installation</a></li>
+        </ul>
+        <ul>
+          <li><a href="#testing">Testing</a></li>
+        </ul>
+        <li><a href="#testing">Learning Goals</a></li>
       <li><a href="#contributors">Contributors</a></li>
+        <li><a href="#wins-and-challenges">Wins and Challenges</a></li>
       <li><a href="#acknowledgments">Acknowledgments</a></li>
     </ol>
   </details>
@@ -37,11 +44,11 @@
 <!-- ABOUT THE PROJECT -->
 ## About the Project
 
-Welcome to Bookhaven! We have designed this software to streamline the inventory management of Little Free Libraries. We aim to connect books to readers in the most efficient way possible. Our application allows you to keep track of books in your library and explore the books in libaries near you, ensuring that each story finds a reader. For more information about Little Free Library, visit them at [LittleFreeLibrary.org](https://littlefreelibrary.org/).
+Welcome to BookHaven! We have designed this software to streamline the inventory management of Little Free Libraries. We aim to connect books to readers in the most efficient way possible. Our application allows you to keep track of books in your library and explore the books in libraries near you, ensuring that each story finds a reader. For more information about Little Free Library, visit them at [LittleFreeLibrary.org](https://littlefreelibrary.org/).
+
+The front-end application provides a mobile-friendly, interactive website so you can take BookHaven with you into your local community.
 
 Check out our back end repository: [![Github][Github]][project-be-gh-url]
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- BUILT WITH -->
@@ -58,12 +65,12 @@ Check out our back end repository: [![Github][Github]][project-be-gh-url]
 [![GitHub Actions][githubactions-badge]][githubactions-url]
 [![Cypress][cypress-badge]][cypress-url] 
 
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- Screenshots -->
-## Screenshots
+## Preview
+![BookHaven-preview](https://github.com/BookHaven/BookHaven-FE/assets/121128718/3685eb7a-5265-499d-af9a-8592a39fb877)
 
 
 
@@ -72,11 +79,23 @@ Check out our back end repository: [![Github][Github]][project-be-gh-url]
 
 <!-- steps to run the application locally -->
 ### Installation
+- In the terminal, clone the [Front End Repo](https://github.com/BookHaven/BookHaven-FE) to your local machine. To do so using an SSH key, run `git clone [git@github.com](mailto:git@github.com):BookHaven/BookHaven-FE.git`
+- Run `cd` to navigate into the newly created `book-haven-fe` directory.
+- Run `npm install` to install all dependencies.
+- Run `npm start` to launch the project locally in your browser.
 
 <!-- TESTING -->
 ### Testing
+To run the tests locally:
+- In the local cloned directory’s root folder, run `npm install cypress --save-dev` to install testing dependencies.
+- To open the Cypress test interface, run `npm run cypress`
+- Configure for E2E Testing by following the prompts.
+
+Or, check the existing test workflows under the `Actions` tab of the GitHub repo.
+- _All tests are passing at the time of deployment._
 
 
+![Screenshot 2023-07-16 at 2 52 08 PM](https://github.com/BookHaven/BookHaven-FE/assets/121128718/406ce90c-150d-4dd0-8118-9569f6128645)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -90,24 +109,26 @@ Check out our back end repository: [![Github][Github]][project-be-gh-url]
 - Build applications that execute in development, test, CI, and production environments
 - Focus on communication between front-end and back-end teams in order to complete and deploy features that have been outlined by the project spec
 
-## Wins & Challenges
+## Wins and Challenges
 
 #### Wins
-- Implementing React, TypeScript, and Redux Toolkit (RTK)
+- Learning and successfuly implementing TypeScript and Redux Toolkit (RTK)
 - Having fun with CSS styling
 - Communicating with full-stack team during daily standups
-- Collaborating using driver-navigator and divide-and-conquer approaches
+- Collaborating using both driver-navigator and divide-and-conquer approaches
   
 #### Challenges
 - Having only two front-end members for the front-end team versus four members on back-end
 - Implenting multiple new concepts simultaneously
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
 <!-- CONTRIBUTORS -->
 ## Contributors
 
-| [<img alt="Tiala Young" width="100" src=".github/images/tiala.jpeg"/>][tiala-li-url] | [<img alt="Sara Park" width="100" src=".github/images/sara.jpeg"/>][sara-li-url] | 
-| ------------------ | ------------ |
 | Tiala Young | Sara Park | 
+| ------------------ | ------------ |
 | Front End | Front End | 
 | [![Github][Github]][tiala-gh-url] | [![Github][Github]][sara-gh-url] | 
 | [![Linkedin][linkedin]][tiala-li-url] | [![Linkedin][linkedin]][sara-li-url] |
@@ -138,15 +159,13 @@ Check out our back end repository: [![Github][Github]][project-be-gh-url]
   </a>
 </div>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [bookhaven-logo]: https://github.com/ResidentMario/missingno/assets/105441393/1b76aa4d-80a8-400b-97fc-792e83bcc2ce
 [bookhaven-library]: https://github.com/ResidentMario/missingno/assets/105441393/31d504e0-593a-4317-9707-470c37be2851
 [project-requirements]: https://mod4.turing.edu/projects/capstone/
-[FE-deployment]: <!-- ADD DEPLOYED SITE HERE -->
+[FE-deployment]: https://the-book-haven.vercel.app
 [contributors-shield]: https://img.shields.io/github/contributors/BookHaven/BookHaven-FE.svg?style=for-the-badge
 [contributors-url]: https://github.com/BookHaven/BookHaven-FE/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/BookHaven/BookHaven-FE.svg?style=for-the-badge
