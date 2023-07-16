@@ -3,28 +3,9 @@ import { fetchLibraries } from '../redux/libraryIndex';
 import { useEffect } from 'react';
 import '../styles/libraryInfo.css';
 
-interface Library {
-    id: number;
-    type: string;
-    attributes: {
-        name: string;
-        address: {
-            street: string;
-            city: string;
-            state: string;
-            zip: string;
-        }
-        location: {
-            lat: number;
-            lon: number;
-        },
-        book_count: number;
-    };
-}
-
 interface LibraryInfoProp {
     currentLibraryId: number;
-}
+};
 
 export const LibraryInfo = ({ currentLibraryId }: LibraryInfoProp) => {
     const libraryIndex = useAppSelector((state) => state.libraryIndex);

@@ -4,8 +4,8 @@ import { fetchBooks } from '../redux/books';
 import { NavLink } from 'react-router-dom';
 import { LibraryInfo } from './LibraryInfo';
 import { FormView } from './Form';
-import '../styles/libraryDetailsView.css';
 import { ErrorView } from './ErrorView';
+import '../styles/libraryDetailsView.css';
 
 interface LibraryDetailsViewProps {
   currentLibraryId: number;
@@ -31,11 +31,11 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
 
   const displayForm = () => {
     setIsFormVisible(true);
-  }
+  };
 
   const hideForm = () => {
     setIsFormVisible(false);
-  }
+  };
 
   return (
     <div className="library-details-page">
