@@ -2,7 +2,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-
+<!-- ## Readme-top -->
 <div align="center">
     <img src="https://github.com/ResidentMario/missingno/assets/105441393/1b76aa4d-80a8-400b-97fc-792e83bcc2ce" alt="Logo" width="700" height="175">
   </a>
