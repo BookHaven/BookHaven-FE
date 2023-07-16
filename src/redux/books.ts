@@ -55,7 +55,6 @@ const initialState: InitialState = {
 
 export const fetchBooks = createAsyncThunk('books/fetchBooks', (libraryId: number) => {
   return axios 
-    // .get(`https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/${libraryId}/books`)
     .get(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books`)
     .then(response => response.data)
     .catch(error => {
@@ -66,7 +65,6 @@ export const fetchBooks = createAsyncThunk('books/fetchBooks', (libraryId: numbe
 export const postBook = createAsyncThunk('books/postBook', async (parameterObject: PostBooksRequest) => {
   try {
     const { libraryId, isbn } = parameterObject;
-    // const response = await axios.post(`https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/${libraryId}/books`, { isbn });
     const response = await axios.post(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books/`, { isbn });
     return response.data;
   } catch (error) {
@@ -77,7 +75,6 @@ export const postBook = createAsyncThunk('books/postBook', async (parameterObjec
 export const removeBook = createAsyncThunk('books/removeBook', async (parameterObject: RemoveBooksRequest) => {
   try {
     const { libraryId, bookId } = parameterObject;
-    // const response = await axios.delete(`https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/${libraryId}/books/${bookId}`);
     const response = await axios.delete(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books/${bookId}`);
     
     return response.data;
