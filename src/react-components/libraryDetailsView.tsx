@@ -1,8 +1,9 @@
-import { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../redux/store';
 import { fetchBooks } from '../redux/books';
 import { NavLink } from 'react-router-dom';
 import { LibraryInfo } from './LibraryInfo';
+import { FormView } from './Form';
 
 interface LibraryDetailsViewProps {
   currentLibraryId: number;
@@ -11,10 +12,15 @@ interface LibraryDetailsViewProps {
 export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps) => {
   const books = useAppSelector(state => state.books);
   const dispatch = useAppDispatch();
+  const [isFormVisible, setIsFormVisible] = useState(false);
   
   useEffect(() => {
     dispatch(fetchBooks(currentLibraryId))
   }, [])
+
+  const displayForm = () => {
+    setIsFormVisible(true);
+  }
 
   return (
     <div>
@@ -24,8 +30,9 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
       {!books.loading && books.books.length ? (
         <div className="libraryDetailsPage">
             <NavLink to={`/libraries/${currentLibraryId}/form`}>
-              <button className="addBookBtn">Add a Book</button>
+              <button className="addBookBtn" onClick={displayForm}>Add a Book</button>
             </NavLink>
+            {isFormVisible && <FormView currentLibraryId={currentLibraryId} />}
             <section className="books-section">
               {books.books.map(book=> (
                 <NavLink to={`/libraries/${currentLibraryId}/books/${book.id}`}>
