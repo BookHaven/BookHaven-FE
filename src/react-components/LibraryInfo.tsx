@@ -1,6 +1,7 @@
 import { useAppSelector, useAppDispatch } from '../redux/store';
 import { fetchLibraries } from '../redux/libraryIndex';
 import { useEffect } from 'react';
+import '../styles/libraryInfo.css';
 
 interface Library {
     id: number;
@@ -39,7 +40,7 @@ export const LibraryInfo = ({ currentLibraryId }: LibraryInfoProp) => {
     } else {
         return (
             <div className="library-info">
-                <h1>{library.attributes.name}</h1>
+                <h1 className="library-name">{library.attributes.name}</h1>
                 <p className="street">{library.attributes.address.street}</p>
                 <p className="city-state-zip">{library.attributes.address.city}, {library.attributes.address.state} {library.attributes.address.zip}</p>
             </div>

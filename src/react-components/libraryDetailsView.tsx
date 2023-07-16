@@ -4,6 +4,7 @@ import { fetchBooks } from '../redux/books';
 import { NavLink } from 'react-router-dom';
 import { LibraryInfo } from './LibraryInfo';
 import { FormView } from './Form';
+import '../styles/libraryDetailsView.css';
 
 interface LibraryDetailsViewProps {
   currentLibraryId: number;
