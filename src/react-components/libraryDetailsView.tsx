@@ -31,25 +31,23 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
       <LibraryInfo currentLibraryId={currentLibraryId} />
       {books.loading && <div className="books-loading">Loading...</div>}
       {!books.loading && books.error ? <div className="books-error-message">Error: {books.error}</div> : null}
+      {isFormVisible ? (
+        <section className="form-container">
+          <button className="hide-form-btn" onClick={hideForm}>Hide form</button>
+          <FormView currentLibraryId={currentLibraryId} />
+        </section>
+        ) : (
+        <button className="addBookBtn" onClick={displayForm}>Add a Book</button>
+      )}
       {!books.loading && books.books.length ? (
-        <div className="libraryDetailsPage">
-          {isFormVisible ? (
-          <section className="form-container">
-            <button className="hide-form-btn" onClick={hideForm}>Hide form</button>
-            <FormView currentLibraryId={currentLibraryId} />
-          </section>
-          ) : (
-          <button className="addBookBtn" onClick={displayForm}>Add a Book</button>
-          )}
-          <section className="books-section">
-            {books.books.map(book=> (
-              <NavLink to={`/libraries/${currentLibraryId}/books/${book.id}`}>
-                <article key={book.id} className="book">{book.attributes.book_image}</article>
-              </NavLink>
-            ))}
-          </section>
-        </div>
-        ) : "Library Not Found"} 
+        <section className="books-section">
+          {books.books.map(book=> (
+            <NavLink to={`/libraries/${currentLibraryId}/books/${book.id}`}>
+              <article key={book.id} className="book">{book.attributes.book_image}</article>
+            </NavLink>
+          ))}
+        </section>
+      ) : "Library Not Found"} 
     </div>
   )
 }
