@@ -52,3 +52,17 @@
   margin-bottom: 0;
   font-size: 1.25rem;
 }
+
+@media screen and (max-width: 500px) {
+  .single-library-container {
+    width: 20rem;
+    height: fit-content;
+    margin: 1rem 0.5rem;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .single-library-container {
+    width: 16rem;
+  }
+}
