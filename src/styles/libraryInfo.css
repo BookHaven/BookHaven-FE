@@ -1,5 +1,20 @@
+@media (max-width: 767px) {
+    .library-name {
+        font-size: 2em;
+    }
+}
+  
+@media (min-width: 768px) {
+    .library-info {
+        margin-bottom: 1em;
+    }
+
+    .library-name {
+        font-size: 2.5em;
+    }
+}
+
 .library-info {
-    margin-bottom: 1em;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,7 +23,6 @@
 .library-name {
     color: #684526;
     font-weight: 900;
-    font-size: 2.5em;
     margin-bottom: 0;
 }
 
