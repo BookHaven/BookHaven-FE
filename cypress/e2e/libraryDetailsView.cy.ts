@@ -78,7 +78,7 @@ describe('Library Details page', () => {
     })
 
     it('should post a new book on the DOM', () => {
-        cy.intercept("POST", "https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books", {
+        cy.intercept("POST", "https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books/", {
             statusCode: 201,
             body: { 
                 isbn: "12345"
