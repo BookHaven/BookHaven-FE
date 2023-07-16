@@ -1,17 +1,33 @@
+@media (max-width: 767px) {
+    header {
+        padding: 10px 10px;
+    }
+    
+    .bookhaven-logo {
+        width: 80%;
+        height: 80%;
+    }
+}
+
+@media (min-width: 768px) {
+    header {
+        padding: 16px 48px;
+    }
+
+    .bookhaven-logo {
+        width: 24em;
+        height: 4.5em;
+    }
+}
+  
 header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 16px 48px;
 }
 
 .header a {
     z-index: 100;
-}
-
-.bookhaven-logo {
-    width: 24em;
-    height: 4.5em;
 }
 
 .return-to-libraries-btn {
