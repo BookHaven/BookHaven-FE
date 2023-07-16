@@ -130,6 +130,14 @@
   display: none;
 }
 
+@media screen and (max-width: 1100px) {
+  .books-bottom-container,
+  .books-top-container {
+    margin-right: 6rem;
+    margin-left: 6rem;
+  }
+}
+
 @media screen and (max-width: 890px) {
   .books-top-container {
     flex-direction: column;
