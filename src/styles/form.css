@@ -2,3 +2,13 @@ form {
     display: flex;
     flex-direction: column;
 }
+
+#isbn-input {
+    height: 2em;
+    background-color: white;
+    margin-bottom: 1em;
+}
+
+.add-book-btn {
+    margin-bottom: 0.5em;
+}
