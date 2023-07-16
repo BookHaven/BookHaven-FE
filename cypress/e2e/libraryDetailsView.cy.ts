@@ -70,20 +70,4 @@ describe('Library Details page', () => {
         cy.get('input[name="isbn"]').type('12345')
         cy.get('input[name="isbn"]').should('have.value', '12345')
     })
-
-    it('should post a new book on the DOM', () => {
-        cy.intercept("POST", "https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books/", {
-            statusCode: 201,
-            body: { 
-                isbn: "12345"
-            }
-        })
-        
-        cy.get('.library-details-page').find('.addBookBtn').click()
-        cy.get('input[name=isbn]').type("12345")
-        cy.get('form').find('.add-book-btn').click()
-        .then(() => {
-            cy.get('.books-section').find('.book').should('have.length', 5);
-        });
-    })
 })

@@ -76,7 +76,6 @@ export const removeBook = createAsyncThunk('books/removeBook', async (parameterO
   try {
     const { libraryId, bookId } = parameterObject;
     const response = await axios.delete(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books/${bookId}`);
-    
     return response.data;
   } catch (error) {
     throw new Error('Error: Unable to remove book');
