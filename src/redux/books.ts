@@ -1,6 +1,5 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { useState } from "react";
 import { useAppSelector } from '../redux/store';
 
 interface InitialState {
@@ -68,7 +67,7 @@ export const postBook = createAsyncThunk('books/postBook', async (parameterObjec
   try {
     const { libraryId, isbn } = parameterObject;
     // const response = await axios.post(`https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/${libraryId}/books`, { isbn });
-    const response = await axios.post(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books`, { isbn });
+    const response = await axios.post(`https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/${libraryId}/books/`, { isbn });
     return response.data;
   } catch (error) {
     throw new Error('Error: Unable to add book');
