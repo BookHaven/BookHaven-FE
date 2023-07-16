@@ -43,6 +43,7 @@
   height: 193px;
   width: 128px;
   border-radius: 3px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
 }
 
 .books-title {
@@ -196,5 +197,6 @@
   .books-image,
   .books-remove-button {
     margin-top: 1.25rem;
+    box-shadow: 7px 7px 7px rgba(0,0,0,0.75);
   }
 }

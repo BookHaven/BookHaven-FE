@@ -18,6 +18,7 @@ form {
 
 .add-book-btn:hover {
     background-color: rgb(254, 225, 171);
+    box-shadow: 10px 10px 10px rgba(0,0,0,0.75);
 }
 
 .comment {
