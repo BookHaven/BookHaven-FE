@@ -1,35 +1,54 @@
-.single-library-container,
-.single-library-container p,
-.single-library-container a {
-  background-color: #D1EACF;
-  color: black;
-  text-align: center;
-}
 
 .single-library-container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 2rem;
   width: 25rem;
   height: 12rem;
   margin: 1rem 1rem;
   padding: 1.5rem;
-  border-radius: 3rem;
+  border-radius: 1.5rem;
+  background-color: #D1EACF;
+  text-align: center;
+  color: black;
+  box-shadow: 6px 6px 4px lightgrey;
 }
 
-.single-library-link {
+.single-library-container:hover {
+  background-color: #C0DCBE;
+  box-shadow: 8px 8px 4px lightgrey;
+}
+
+.single-library-link:visited {
+  color: black;
+}
+
+.single-library-name {
+  text-decoration: none;
   font-family: 'Grandstander', cursive;
   font-size: 1.75rem;
   font-weight: bold;
   margin-top: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
-.single-library-count,
-.single-library-count-message {
-  margin-bottom: 0;
+.single-library-container p {
+  margin-top: 0rem;
+  margin-bottom: 0rem;
+}
+
+.single-library-address {
   font-size: 1.25rem;
 }
 
+.single-library-count{
+  margin-bottom: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
 .single-library-count-message {
-  margin-top: 0rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-size: 1.25rem;
 }

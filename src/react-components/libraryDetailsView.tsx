@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import { LibraryInfo } from './LibraryInfo';
 import { FormView } from './Form';
 import '../styles/libraryDetailsView.css';
+import { ErrorView } from './ErrorView';
 
 interface LibraryDetailsViewProps {
   currentLibraryId: number;
@@ -12,9 +13,18 @@ interface LibraryDetailsViewProps {
 
 export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps) => {
   const books = useAppSelector(state => state.books);
+  const libraryDetails = useAppSelector(state => state.libraryIndex);
   const dispatch = useAppDispatch();
   const [isFormVisible, setIsFormVisible] = useState(false);
   
+  let errorProp;
+
+  if (libraryDetails.error) {
+    errorProp = libraryDetails.error
+  } else if (books.error) {
+    errorProp = books.error
+  };
+
   useEffect(() => {
     dispatch(fetchBooks(currentLibraryId))
   }, [])
@@ -31,14 +41,14 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
     <div className="library-details-page">
       <LibraryInfo currentLibraryId={currentLibraryId} />
       {books.loading && <div className="books-loading">Loading...</div>}
-      {!books.loading && books.error ? <div className="books-error-message">Error: {books.error}</div> : null}
+      {!books.loading && errorProp ? <div className="books-error-message"><ErrorView error={errorProp}/></div> : null}
       {isFormVisible ? (
         <section className="form-container">
           <FormView currentLibraryId={currentLibraryId} />
           <button className="hide-form-btn" onClick={hideForm}>Cancel</button>
         </section>
-      ) : <button className="addBookBtn" onClick={displayForm}>Add Book</button>}
-      {!books.loading && books.books.length ? (
+      ) : <button className="addBookBtn" onClick={displayForm}>Add a Book</button>}
+      {!books.loading && books.books.length && !errorProp ? (
         <section className="books-section">
           {books.books.map(book=> (
             <NavLink to={`/libraries/${currentLibraryId}/books/${book.id}`}>
@@ -46,7 +56,7 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
             </NavLink>
           ))}
         </section>
-      ) : "Library Not Found"} 
+      ) : null} 
     </div>
   )
 }
