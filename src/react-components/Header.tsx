@@ -1,9 +1,10 @@
-import React from "react";
 import '../styles/Header.css';
-import { NavLink, useHistory } from 'react-router-dom';
+import { NavLink, useHistory, useRouteMatch } from 'react-router-dom';
 
 function Header() {
     const history = useHistory();
+    const libraryMatch = useRouteMatch("/libraries/:id");
+    const bookMatch = useRouteMatch("/libraries/:id/books/:book_id");
 
     const returntoLibraries = () => {
         history.push(`/libraries`);
@@ -12,9 +13,9 @@ function Header() {
     return (
         <header className="header">
             <NavLink exact to="/">
-                <img src="https://files.slack.com/files-pri/T029P2S9M-F05H7FKSV8T/bookhaven_logo.png" alt="BookHaven logo" className="bookhaven-logo" />
+                <img src="bookhaven_logo.png" alt="BookHaven logo" className="bookhaven-logo" />
             </NavLink>
-            {((window.location.pathname === '/') || (window.location.pathname === '/libraries')) ? null : <button className="return-to-libraries-btn" onClick={returntoLibraries}>Return to Libraries</button>}
+            { (libraryMatch || bookMatch) ? <button className="return-to-libraries-btn" onClick={returntoLibraries}>Return to Libraries</button> : null }
         </header>
     );
 };
