@@ -2,22 +2,26 @@ header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 16px 48px;
+}
+
+.header a {
+    z-index: 100;
 }
 
 .bookhaven-logo {
-    margin-top: 2em;
-    margin-left: 2em;
+    width: 24em;
+    height: 4.5em;
 }
 
 .return-to-libraries-btn {
-    margin-top: 2em;
-    margin-right: 2em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    align-self: center;
+    height: 3em;
     width: 12em;
     background-color: #684526;
     color: white;
     border-radius: 7px;
     font-weight: bold;
+    cursor: pointer;
 }
   

@@ -1,15 +1,15 @@
 import '../styles/errorView.css';
-import { NavLink, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 export const ErrorView = ({ error }: { error: string }) => {
   let displayedError, displayedErrorImage;
 
   if (error.length > 0) {
     displayedError = "We seem to be having technical issues. Please try again later.";
-    displayedErrorImage = <img src='/503.png' alt="503" />;
+    displayedErrorImage = <img src='/503.png' alt="503" className="error-img"/>;
   } else {
     displayedError = "We can't seem to find the page you're looking for. You can head over to our homepage or recheck if you used the right address.";
-    displayedErrorImage = <img src="/404.png" alt="404" />;
+    displayedErrorImage = <img src="/404.png" alt="404" className="error-img"/>;
   };
 
   const history = useHistory();
