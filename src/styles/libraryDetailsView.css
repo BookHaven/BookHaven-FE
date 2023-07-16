@@ -10,6 +10,11 @@
     margin-bottom: 2.5em;
 }
 
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .books-section {
     display: grid;
     grid-template-columns: repeat(5, 1fr);

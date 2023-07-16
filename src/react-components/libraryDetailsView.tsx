@@ -34,8 +34,8 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
       {!books.loading && books.error ? <div className="books-error-message">Error: {books.error}</div> : null}
       {isFormVisible ? (
         <section className="form-container">
-          <button className="hide-form-btn" onClick={hideForm}>Hide form</button>
           <FormView currentLibraryId={currentLibraryId} />
+          <button className="hide-form-btn" onClick={hideForm}>Cancel</button>
         </section>
       ) : <button className="addBookBtn" onClick={displayForm}>Add a Book</button>}
       {!books.loading && books.books.length ? (
