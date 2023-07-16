@@ -62,7 +62,7 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
   };
 
   if (booksDetails.loading) {
-    toRender = <div>Loading...</div>
+    toRender = <div className='loading-message'>Loading...</div>
   } else if (booksDetails.error || !bookToDisplay) {
     toRender = <div><ErrorView error={booksDetails.error} /></div>
   } else if (booksDetails.books.length && bookToDisplay) {
