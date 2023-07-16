@@ -35,6 +35,10 @@ body {
   margin: 0;
 }
 
+.landing-button {
+  padding: 0.5em 2em 0.5em 2em;
+}
+
 .landing-button:hover {
   background-color: rgb(254, 225, 171);
   cursor: pointer;

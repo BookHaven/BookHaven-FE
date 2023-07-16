@@ -75,7 +75,6 @@
 .books-remove-button:hover {
   background-color: rgba(243, 153, 163, 1);
   color: white;
-  border: 0;
 }
 
 /* Modal for Remove Book */

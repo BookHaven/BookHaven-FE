@@ -45,6 +45,11 @@ body {
   text-align: center;
 }
 
+.error-button {
+  padding: 0.5em 2em 0.5em 2em;
+}
+
+
 .error-button:hover {
   background-color: rgb(254, 225, 171);
   cursor: pointer;
