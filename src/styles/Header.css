@@ -1,23 +1,50 @@
+@media (max-width: 767px) {
+    header {
+        padding: 10px 10px;
+    }
+    
+    .bookhaven-logo {
+        width: 80%;
+        height: 80%;
+    }
+
+    .return-to-libraries-btn {
+        height: 2em;
+        font-size: 0.7em;
+        padding-left: 0em;
+        padding-right: 0em;
+        margin-top: 0.5em;
+    }
+}
+
+@media (min-width: 768px) {
+    header {
+        padding: 16px 15px;
+    }
+
+    .bookhaven-logo {
+        width: 24em;
+        height: 4.5em;
+    }
+
+    .return-to-libraries-btn {
+        height: 3em;
+        width: 12em;
+        margin-top: 1em;
+    }
+}
+  
 header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 16px 48px;
 }
 
 .header a {
     z-index: 100;
 }
 
-.bookhaven-logo {
-    width: 24em;
-    height: 4.5em;
-}
-
 .return-to-libraries-btn {
-    align-self: center;
-    height: 3em;
-    width: 12em;
     background-color: #684526;
     color: white;
     border-radius: 7px;
