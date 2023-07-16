@@ -73,8 +73,7 @@
 }
 
 .books-remove-button:hover {
-  background-color: rgba(243, 153, 163, 1);
-  color: white;
+  background-color: rgb(254, 225, 171);
 }
 
 /* Modal for Remove Book */
@@ -88,8 +87,7 @@
 }
 
 .cancelbtn:hover {
-  background-color: rgba(104, 69, 38, .5);
-  color: white;
+  background-color: rgb(254, 225, 171);
 }
 
 .deletebtn {
