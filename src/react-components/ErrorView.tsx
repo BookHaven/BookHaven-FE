@@ -1,5 +1,5 @@
 import '../styles/errorView.css';
-import { NavLink, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 export const ErrorView = ({ error }: {error: string}) => {
   let displayedError;
@@ -13,9 +13,9 @@ export const ErrorView = ({ error }: {error: string}) => {
   let displayedErrorImage;
 
   if (error.length > 0) {
-    displayedErrorImage = <img src='/503.png' alt="503"/>
+    displayedErrorImage = <img src='/503.png' alt="503" className="error-img"/>
   } else {
-    displayedErrorImage = <img src="/404.png" alt="404"/>
+    displayedErrorImage = <img src="/404.png" alt="404" className="error-img"/>
   }
 
   const history = useHistory();
