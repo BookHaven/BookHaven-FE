@@ -13,7 +13,7 @@
     Read more about project requirements <a href=project-requirements>here</a>.
     <br />
     <br />
-    Check out our <a href=FE-deployment>deployed website</a>!
+    Check out our <a href='https://the-book-haven.vercel.app'>deployed website</a>!
   </p>
 
 
