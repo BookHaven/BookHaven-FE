@@ -5,16 +5,29 @@
     align-items: center;
 }
 
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: rgb(245, 195, 103); */
+    margin-bottom: 5em;
+}
+
 .addBookBtn {
     padding: 0.5em 2em 0.5em 2em;
     margin-bottom: 2.5em;
 }
 
-.form-container {
-    display: flex;
-    flex-direction: column;
-    /* background-color: rgb(245, 195, 103); */
-    margin-bottom: 5em;
+.addBookBtn:hover {
+    background-color: rgb(254, 225, 171);
+}
+
+.hide-form-btn {
+    width: 1.5em;
+}
+
+.hide-form-btn:hover {
+    background-color: rgb(254, 225, 171);
 }
 
 .books-section {
