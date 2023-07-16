@@ -6,7 +6,6 @@
 }
 
 .books-top-container {
-  margin-right: 14rem;
   padding: 0.5rem;
 }
 
@@ -31,8 +30,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 60%;
-  padding-left: 2rem;
+  padding-left: 3rem;
   text-align: left;
 }
 
@@ -66,7 +64,6 @@
 }
 
 .tooltip {
-  
   position: relative;
   display: inline-block;
   height: fit-content;
@@ -75,9 +72,9 @@
 .books-remove-button {
   width: 10rem;
   height: 2rem;
-  background-color: #A4CB91;
+  background-color: white;
   color: black;
-  border: 1px solid #A4CB91;
+  border: 1px solid #684526;
   text-align: center;
   padding: 0.25rem;
   border-radius: 3px;
@@ -94,7 +91,6 @@
   width: 8rem;
   background-color: rgba(164, 203, 145, .7);
   color: black;
-  border: 1px solid #A4CB91;
   text-align: center;
   padding: 0.25rem;
   border-radius: 6px;
@@ -107,4 +103,25 @@
 
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+@media screen and (max-width: 890px) {
+  .books-top-container {
+    flex-direction: column;
+  }
+
+  .books-top-left {
+    justify-content: left;
+  }
+
+  .books-remove-button {
+    margin-top: 1rem;
+  }
+
+  .tooltip .tooltiptext {
+    top: 110%;
+    /* bottom: 0%; */
+    left: 50%;
+    margin-left: -4.25rem; /* Use half of the width, to center the tooltip */
+  }
 }
