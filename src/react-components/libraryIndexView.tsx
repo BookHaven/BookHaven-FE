@@ -19,11 +19,11 @@ export const LibraryIndexView = () => {
         bookCount={library.attributes.book_count}
       />
     )
-  })
+  });
 
   useEffect(() => {
     dispatch(fetchLibraries())
-  }, [])
+  }, []);
 
   return (
     <div>
