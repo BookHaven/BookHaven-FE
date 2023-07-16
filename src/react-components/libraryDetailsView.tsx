@@ -52,7 +52,7 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
         <section className="books-section">
           {books.books.map(book=> (
             <NavLink to={`/libraries/${currentLibraryId}/books/${book.id}`}>
-              <img src={book.attributes.book_image} key={book.id} className="book"/>
+              <img src={book.attributes.book_image} alt="Book cover" key={book.id} className="book"/>
             </NavLink>
           ))}
         </section>
