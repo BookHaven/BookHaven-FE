@@ -1,27 +1,21 @@
 import '../styles/Header.css';
-import { NavLink, useHistory, useLocation } from 'react-router-dom';
+import { NavLink, useHistory, useRouteMatch } from 'react-router-dom';
 
 function Header() {
     const history = useHistory();
-    const location = useLocation();
-    let checkCurrentPath;
+    const libraryMatch = useRouteMatch("/libraries/:id");
+    const bookMatch = useRouteMatch("/libraries/:id/books/:book_id");
 
     const returntoLibraries = () => {
         history.push(`/libraries`);
     };
 
-    if (location.pathname === '/' || location.pathname === '/libraries') {
-        checkCurrentPath = null
-    } else {
-        checkCurrentPath = <button className="return-to-libraries-btn" onClick={returntoLibraries}>Return to Libraries</button>
-    };
-
     return (
         <header className="header">
             <NavLink exact to="/">
-                <img src="/bookhaven_logo.png" alt="BookHaven logo" className="bookhaven-logo"></img>
+                <img src="/bookhaven_logo.png" alt="BookHaven logo" className="bookhaven-logo" />
             </NavLink>
-            {checkCurrentPath}
+            { (libraryMatch || bookMatch) ? <button className="return-to-libraries-btn" onClick={returntoLibraries}>Return to Libraries</button> : null }
         </header>
     );
 };
