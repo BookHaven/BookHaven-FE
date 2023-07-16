@@ -54,7 +54,7 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: { currentBo
                 <p className="books-library-name">{libraryToDisplay.attributes.name}</p>
               </NavLink>
               <h1 className='books-title'>{bookToDisplay.attributes.title}</h1>
-              <h3 className='books-author'>{bookToDisplay.attributes.author}</h3>
+              <h2 className='books-author'>{bookToDisplay.attributes.author}</h2>
               <div className="books-isbn-genre-container">
                 <p className='books-isbn'>ISBN: {bookToDisplay.attributes.isbn}</p>
                 <p className='books-genre'>Genre: {bookToDisplay.attributes.genre}</p>
