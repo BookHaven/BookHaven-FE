@@ -36,22 +36,23 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
     renderWhenFulfilled =
       <>
         <div className="books-top-container">
-          <img className="books-image" src={`${bookToDisplay.attributes.book_image}`} alt="Book cover"/>
-          <div className="books-details">
-            <NavLink to={`/libraries/${currentLibraryId}`} style={{ color: '#684526', textDecoration: 'underline'}}>
-              <p className="books-library-name">{libraryToDisplay.attributes.name}</p>
-            </NavLink>
-            <h1 className='books-title'>{bookToDisplay.attributes.title}</h1>
-            <h3 className='books-author'>{bookToDisplay.attributes.author}</h3>
-            <div className="books-isbn-genre-container">
-              <p className='books-isbn'>ISBN: {bookToDisplay.attributes.isbn}</p>
-              <p className='books-genre'>Genre: {bookToDisplay.attributes.genre}</p>
+          <div className="books-top-left">
+            <img className="books-image" src={`${bookToDisplay.attributes.book_image}`} alt="Book cover"/>
+            <div className="books-details">
+              <NavLink to={`/libraries/${currentLibraryId}`} style={{ color: '#684526', textDecoration: 'underline'}}>
+                <p className="books-library-name">{libraryToDisplay.attributes.name}</p>
+              </NavLink>
+              <h1 className='books-title'>{bookToDisplay.attributes.title}</h1>
+              <h3 className='books-author'>{bookToDisplay.attributes.author}</h3>
+              <div className="books-isbn-genre-container">
+                <p className='books-isbn'>ISBN: {bookToDisplay.attributes.isbn}</p>
+                <p className='books-genre'>Genre: {bookToDisplay.attributes.genre}</p>
+              </div>
             </div>
           </div>
           <div className='tooltip'>
             <button className='books-remove-button tooltip' onClick={handleRemove}>Remove Book</button>
-            <span className='tooltiptext'>Remove book from this library's inventory</span>
-            {/* TO DO: popup message to confirm or deny remove action? */}
+            <span className='tooltiptext'>Remove from this library's inventory</span>
           </div>
         </div>
         <div className='books-bottom-container'>
