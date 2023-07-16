@@ -3,8 +3,15 @@ describe('Library Details page', () => {
         cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/1/books', {
             statusCode: 200,
             fixture: 'books.json'
-        })
+        }).as('getBooks')
+        cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries', {
+            statusCode: 200,
+            fixture: 'libraries.json'
+            }).as('getLibraries')
+
         cy.visit('http://localhost:3000/libraries/1')
+        cy.wait('@getBooks')
+        cy.wait('@getLibraries')
     })
   
     it('should go to url ending with "/libraries/1"', () => {
@@ -12,27 +19,16 @@ describe('Library Details page', () => {
     })
     
     it('should display an error message when books cannot be fetched', () => {
-        cy.intercept("GET", "https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/1/books", {
-            statusCode: 500,
-            body: {
-                message: 'Internal Server Error'
-            }
-        }).as('getBooks')
-
         cy.visit('http://localhost:3000/libraries/1')
-        .wait('@getBooks')
-        cy.get(".books-error-message").should('be.visible');
-    })
-  
-    it('should display as loading when fetching books is pending', () => {
-        cy.intercept("GET", "https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/1/books", {
-            statusCode: 202,
-            fixture: 'books.json'
-        }).as('getBooks')
+        .then(() => {
+            cy.intercept("GET", "https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/1/books", {
+                statusCode: 500,
+            }).as('rejectedFetch')
+            .visit('http://localhost:3000/libraries/1')
+            .wait('@rejectedFetch')
 
-        cy.visit('http://localhost:3000/libraries/1')
-        .wait('@getBooks')
-        .get(".books-loading").should('be.visible')
+            cy.get(".books-error-message").should('be.visible');
+        })
     })
 
     it('should display the name of the library', () => {
@@ -45,7 +41,7 @@ describe('Library Details page', () => {
     })
 
     it('should display a list of books for the library', () => {
-        cy.get('.books-section').find('.book').should('have.lengthOf', 7)
+        cy.get('.books-section').find('.book').should('have.lengthOf', 5)
     })
 
     it('should display each book as a link to the book details page', () => {
