@@ -51,4 +51,8 @@ header {
     font-weight: bold;
     cursor: pointer;
 }
-  
+
+.return-to-libraries-btn:hover {
+    background-color: rgb(254, 225, 171);
+    color: #684526;
+}
