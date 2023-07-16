@@ -5,7 +5,7 @@ import { LibraryIndexView } from './react-components/libraryIndexView';
 import { LibraryDetailsView } from './react-components/libraryDetailsView';
 import { LandingView } from './react-components/LandingView';
 import { BookDetailsView } from './react-components/BookDetailsView';
-import { FormView } from './react-components/Form';
+// import { FormView } from './react-components/Form';
 import { ErrorView } from './react-components/ErrorView';
 import Header from './react-components/Header';
 
@@ -21,9 +21,9 @@ const App: React.FC = () => {
           return <LibraryDetailsView currentLibraryId={currentLibrary}/> }}
         />
 
-        <Route exact path='/libraries/:id/form' render={({match}) => {
+        {/* <Route exact path='/libraries/:id/form' render={({match}) => {
           const currentLibrary = parseInt(match.params.id);
-          return <FormView currentLibraryId={currentLibrary}/> }}/>
+          return <FormView currentLibraryId={currentLibrary}/> }}/> */}
 
         <Route exact path='/libraries/:id/books/:book_id' render={({match}) => {
           const currentBook = parseInt(match.params.book_id)

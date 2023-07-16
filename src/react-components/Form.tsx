@@ -30,17 +30,17 @@ export const FormView = ({ currentLibraryId }: FormViewProps) => {
     const handleClick = (event: any) => {
       event.preventDefault();
       dispatch(postBook(parameterObject));
-      history.push(`/libraries/${currentLibraryId}`);
+      // history.push(`/libraries/${currentLibraryId}`);
     }
 
-    const returnToBooks = () => {
-      history.push(`/libraries/${currentLibraryId}`);
-    }
+    // const returnToBooks = () => {
+    //   history.push(`/libraries/${currentLibraryId}`);
+    // }
 
     return (
         <div className="form-page">
-            <LibraryInfo currentLibraryId={currentLibraryId}/>
-            <button className="return-to-books-btn" onClick={returnToBooks}>Return</button>
+            {/* <LibraryInfo currentLibraryId={currentLibraryId}/> */}
+            {/* <button className="return-to-books-btn" onClick={returnToBooks}>Return</button> */}
             <form>  
                 <h2>Add a book to this library</h2>  
                 <input id="isbn-input" type="text" name="isbn" placeholder='Enter ISBN' value={isbn.isbn} onChange={handleIsbnChange}/>
