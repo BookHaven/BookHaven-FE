@@ -47,8 +47,17 @@ Check out our back end repository: [![Github][Github]][project-be-gh-url]
 <!-- BUILT WITH -->
 ### Built With
 
-[![Javascript][js-badge]][js-url] 
-[![Alt Text][badge-link]][url to tech's website] 
+[![Javascript][js-badge]][js-url]
+[![TypeScript][ts-badge]][ts-url] 
+[![React][react-badge]][react-url] 
+[![Router][router-badge]][router-url] 
+[![Redux Toolkit][rtk-badge]][rtk-url] 
+[![HTML][html-badge]][html-url] 
+[![CSS][css-badge]][css-url] 
+[![Vercel][vercel-badge]][vercel-url]
+[![GitHub Actions][githubactions-badge]][githubactions-url]
+[![Cypress][cypress-badge]][cypress-url] 
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -71,7 +80,27 @@ Check out our back end repository: [![Github][Github]][project-be-gh-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+## Learning Goals
+- Demonstrate knowledge of front-end technologies, including React, TypeScript, Redux Toolkit, React Router, HTML, and CSS.
+- Use an agile process to turn well defined requirements into deployed and production ready software
+- Gain experience dividing applications into components and domains of responsibilities to facilitate multi-developer teams.
+- Explore and implement new concepts, patterns, or libraries, specifically Redux Toolkit (RTK) and TypeScript
+- Practice an advanced, professional git workflow including a Pull Request Review
+- Gain experience using continuous integration tools to build and automate the deployment of features using GitHub Actions
+- Build applications that execute in development, test, CI, and production environments
+- Focus on communication between front-end and back-end teams in order to complete and deploy features that have been outlined by the project spec
 
+## Wins & Challenges
+
+#### Wins
+- Implementing React, TypeScript, and Redux Toolkit (RTK)
+- Having fun with CSS styling
+- Communicating with full-stack team during daily standups
+- Collaborating using driver-navigator and divide-and-conquer approaches
+  
+#### Challenges
+- Having only two front-end members for the front-end team versus four members on back-end
+- Implenting multiple new concepts simultaneously
 
 <!-- CONTRIBUTORS -->
 ## Contributors
@@ -130,7 +159,24 @@ Check out our back end repository: [![Github][Github]][project-be-gh-url]
 <!-- tech stack -->
 [js-badge]: https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black
 [js-url]: https://www.javascript.com/
-
+[ts-badge]: https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white
+[ts-url]: https://www.typescriptlang.org/
+[react-badge]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+[react-url]: https://react.dev/
+[rtk-badge]: https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white
+[rtk-url]: https://redux-toolkit.js.org/
+[html-badge]: https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white
+[html-url]: https://www.w3schools.com/html/
+[css-badge]: https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white
+[css-url]: https://www.w3schools.com/css/
+[cypress-badge]: https://img.shields.io/badge/Cypress-17202C.svg
+[cypress-url]: https://docs.cypress.io/guides/overview/why-cypress
+[router-badge]: https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white
+[router-url]: https://v5.reactrouter.com/
+[vercel-badge]: https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white
+[vercel-url]: https://vercel.com/
+[githubactions-badge]: https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white
+[githubactions-url]: https://github.com/features/actions
 
 <!-- linkedin -->
 [tiala-li-url]: https://www.linkedin.com/in/tialayoung/
@@ -156,52 +202,3 @@ Check out our back end repository: [![Github][Github]][project-be-gh-url]
 [grace-gh-url]: https://github.com/grace-joh
 [Jamison-gh-url]: https://github.com/jamisonordway
 [Judson-gh-url]: https://github.com/JudsonStevens
-
-<!--
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
--->
