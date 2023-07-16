@@ -15,8 +15,8 @@ describe('Landing page', () => {
   })
 
   it('Upon link click, it takes the user to the Library Index page', () => {
-    cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries', {
-    // cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries', {
+    // cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries', {
+    cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries', {
       statusCode: 200,
       fixture: 'libraries'
     }).as('getLibraries')

@@ -1,7 +1,7 @@
 describe('Library Index page', () => {
   beforeEach(() => {
-    cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries', {
-    // cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries', {
+    // cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries', {
+    cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries', {
       statusCode: 200,
       fixture: 'libraries'
     }).as('getLibraries')
@@ -21,8 +21,8 @@ describe('Library Index page', () => {
   })
 
   it('User can click on a Library card to be taken to a Library Details page', () => {
-    cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/1/books', {
-    // cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books', {
+    // cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/1/books', {
+    cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books', {
       statusCode: 200,
       fixture: 'books'
     }).as('getBooks')
@@ -33,8 +33,8 @@ describe('Library Index page', () => {
   })
 
   it('User can click on a different Library card to be taken to a different Library Details page', () => {
-    cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/4/books', {
-    // cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/4/books', {
+    // cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/4/books', {
+    cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/4/books', {
       statusCode: 200,
       fixture: 'books'
     }).as('getBooks')
@@ -45,8 +45,8 @@ describe('Library Index page', () => {
   })
 
   it('Displays an error message if a server error occurs (500 level error)', () => {
-    cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries', {
-    // cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries', {
+    // cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries', {
+    cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries', {
       statusCode: 500,
       body: {
         message: 'Internal Server Error'
