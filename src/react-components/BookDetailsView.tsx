@@ -7,13 +7,13 @@ import { ErrorView } from './ErrorView';
 import '../styles/bookDetailsView.css';
 
 export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBookId: number, currentLibraryId: number}) => {
-  const booksDetails = useAppSelector(state => state.books);
+  const books = useAppSelector(state => state.books);
   const libraryDetails = useAppSelector(state => state.libraryIndex);
   const history = useHistory();
   const dispatch = useAppDispatch();
   let renderWhenFulfilled, toRender;
 
-  const bookToDisplay = booksDetails.books.find(book => book.id === currentBookId);
+  const bookToDisplay = books.books.find(book => book.id === currentBookId);
   const libraryToDisplay = libraryDetails.libraries.find(library => library.id === currentLibraryId);
 
   const parameterObject = {
@@ -61,11 +61,11 @@ export const BookDetailsView = ({ currentBookId, currentLibraryId }: {currentBoo
       </>
   };
 
-  if (booksDetails.loading) {
+  if (books.loading) {
     toRender = <div className='loading-message'>Loading...</div>
-  } else if (booksDetails.error || !bookToDisplay) {
-    toRender = <div><ErrorView error={booksDetails.error} /></div>
-  } else if (booksDetails.books.length && bookToDisplay) {
+  } else if (books.error || !bookToDisplay) {
+    toRender = <div><ErrorView error={books.error} /></div>
+  } else if (books.books.length && bookToDisplay) {
     toRender = <>{renderWhenFulfilled}</>
   };
 
