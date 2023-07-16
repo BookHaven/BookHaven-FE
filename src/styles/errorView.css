@@ -39,19 +39,11 @@ body {
   text-align: center;
 }
 
-
-.error-button {
-  background-color: #A4CB91;
-  color: white;
-  border: 1px solid #A4CB91;
-}
-
 .error-button:hover {
-  background-color: white;
-  color: #A4CB91;
-  border: 1px solid #A4CB91;
-
+  background-color: rgb(254, 225, 171);
+  cursor: pointer;
 }
+
 .library-image {
   height: 90%;
   min-height: 500px;
