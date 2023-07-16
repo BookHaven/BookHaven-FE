@@ -28,3 +28,7 @@ button {
   border-radius: 3px;
   cursor: pointer;
 }
+
+.loading-message {
+  text-align: center;
+}

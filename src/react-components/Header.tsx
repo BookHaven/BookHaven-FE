@@ -8,12 +8,12 @@ function Header() {
 
     const returntoLibraries = () => {
         history.push(`/libraries`);
-    }
+    };
 
     return (
         <header className="header">
             <NavLink exact to="/">
-                <img src="bookhaven_logo.png" alt="BookHaven logo" className="bookhaven-logo" />
+                <img src="/bookhaven_logo.png" alt="BookHaven logo" className="bookhaven-logo" />
             </NavLink>
             { (libraryMatch || bookMatch) ? <button className="return-to-libraries-btn" onClick={returntoLibraries}>Return to Libraries</button> : null }
         </header>

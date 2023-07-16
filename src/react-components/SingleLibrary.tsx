@@ -28,7 +28,7 @@ export const SingleLibrary = (props: SingleLibraryProps) => {
           </p>
         </div>
         <div className="book-count">
-          <p className="single-library-count">{`${bookCount}`}</p>
+          <p className="single-library-count">{bookCount}</p>
           <p className="single-library-count-message">books in this library</p>
         </div>
     </div>
