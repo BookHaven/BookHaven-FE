@@ -4,6 +4,7 @@ import { fetchBooks } from '../redux/books';
 import { NavLink } from 'react-router-dom';
 import { LibraryInfo } from './LibraryInfo';
 import { FormView } from './Form';
+import '../styles/libraryDetailsView.css';
 import { ErrorView } from './ErrorView';
 
 interface LibraryDetailsViewProps {
@@ -43,15 +44,15 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
       {!books.loading && errorProp ? <div className="books-error-message"><ErrorView error={errorProp}/></div> : null}
       {isFormVisible ? (
         <section className="form-container">
-          <button className="hide-form-btn" onClick={hideForm}>Hide form</button>
           <FormView currentLibraryId={currentLibraryId} />
+          <button className="hide-form-btn" onClick={hideForm}>Cancel</button>
         </section>
       ) : <button className="addBookBtn" onClick={displayForm}>Add a Book</button>}
       {!books.loading && books.books.length && !errorProp ? (
         <section className="books-section">
           {books.books.map(book=> (
             <NavLink to={`/libraries/${currentLibraryId}/books/${book.id}`}>
-              <article key={book.id} className="book">{book.attributes.book_image}</article>
+              <img src={book.attributes.book_image} key={book.id} className="book"/>
             </NavLink>
           ))}
         </section>
