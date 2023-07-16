@@ -41,14 +41,14 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
     <div className="library-details-page">
       <LibraryInfo currentLibraryId={currentLibraryId} />
       {books.loading && <div className="books-loading">Loading...</div>}
-      {!books.loading && errorProp ? <div className="books-error-message"><ErrorView error={errorProp}/></div> : null}
+      {!books.loading && errorProp && <div className="books-error-message"><ErrorView error={errorProp}/></div>}
       {isFormVisible ? (
         <section className="form-container">
           <FormView currentLibraryId={currentLibraryId} />
           <button className="hide-form-btn" onClick={hideForm}>Cancel</button>
         </section>
       ) : <button className="addBookBtn" onClick={displayForm}>Add a Book</button>}
-      {!books.loading && books.books.length && !errorProp ? (
+      {!books.loading && books.books.length &&!errorProp && (
         <section className="books-section">
           {books.books.map(book=> (
             <NavLink to={`/libraries/${currentLibraryId}/books/${book.id}`} key={book.id}>
@@ -56,7 +56,7 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
             </NavLink>
           ))}
         </section>
-      ) : null} 
+      )} 
     </div>
   )
 }
