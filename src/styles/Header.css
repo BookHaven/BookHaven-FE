@@ -7,6 +7,13 @@
         width: 80%;
         height: 80%;
     }
+
+    .return-to-libraries-btn {
+        height: 2em;
+        font-size: 0.7em;
+        padding-left: 0em;
+        padding-right: 0em;
+    }
 }
 
 @media (min-width: 768px) {
@@ -17,6 +24,11 @@
     .bookhaven-logo {
         width: 24em;
         height: 4.5em;
+    }
+
+    .return-to-libraries-btn {
+        height: 3em;
+        width: 12em;
     }
 }
   
@@ -31,9 +43,6 @@ header {
 }
 
 .return-to-libraries-btn {
-    align-self: center;
-    height: 3em;
-    width: 12em;
     background-color: #684526;
     color: white;
     border-radius: 7px;
