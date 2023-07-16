@@ -28,7 +28,7 @@ export const LibraryIndexView = () => {
   return (
     <div>
       <h2 className='libraries-title'>All Libraries</h2>
-      {libraryIndex.loading && <div>Loading...</div>}
+      {libraryIndex.loading && <div className='loading-message'>Loading...</div>}
       {!libraryIndex.loading && libraryIndex.error ? <div><ErrorView error={libraryIndex.error} /></div> : null}
       {!libraryIndex.loading && libraryIndex.libraries.length ?
         <section className="libraries-container">{libraryCards}</section> : null} 
