@@ -133,13 +133,60 @@
 @media screen and (max-width: 890px) {
   .books-top-container {
     flex-direction: column;
+    align-items: center;
   }
 
+  .books-remove-button,
+  .books-bottom-container {
+    justify-self: center;
+    margin-top: 3rem;
+  }
+
+  .books-top-container {
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  .books-details {
+    padding-left: 1.5rem;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 775px) {
+  .books-bottom-container,
+  .books-top-container {
+    margin-right: 4rem;
+    margin-left: 4rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .books-bottom-container,
+  .books-top-container {
+    margin-right: 2rem;
+    margin-left: 2rem;
+  }
+  
+  .books-bottom-container {
+    margin-top: 1.25rem;
+  }
+
+  .books-top-container {
+    margin-bottom: 1.25rem;
+  }
+  
   .books-top-left {
-    justify-content: left;
+    flex-direction: column-reverse;
+    align-items: center;
   }
 
+  .books-details {
+    padding-left: 0;
+  }
+
+  .books-image,
   .books-remove-button {
-    margin-top: 1rem;
+    margin-top: 1.25rem;
   }
 }
