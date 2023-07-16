@@ -63,18 +63,9 @@
   line-height: 1.5;
 }
 
-.tooltip {
-  position: relative;
-  display: inline-block;
-  height: fit-content;
-}
-
 .books-remove-button {
   width: 10rem;
   height: 2rem;
-  background-color: white;
-  color: black;
-  border: 1px solid #684526;
   text-align: center;
   padding: 0.25rem;
   border-radius: 3px;
@@ -82,27 +73,61 @@
 }
 
 .books-remove-button:hover {
-  background-color: white;
-  color: black;
+  background-color: rgba(243, 153, 163, 1);
+  color: white;
+  border: 0;
 }
 
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 8rem;
-  background-color: rgba(164, 203, 145, .7);
-  color: black;
+/* Modal for Remove Book */
+
+.cancelbtn,
+.deletebtn {
+  height: 2.5rem;
+  margin: 0.5rem;
+  margin-top: 2rem;
+  font-size: medium;
+}
+
+.cancelbtn:hover {
+  background-color: rgba(104, 69, 38, .5);
+  color: white;
+}
+
+.deletebtn {
+  background-color: rgba(243, 153, 163, 0.65);
+}
+
+.deletebtn:hover {
+  background-color: rgba(243, 153, 163, 1);
+}
+
+.modal-text {
+  padding: 2rem;
   text-align: center;
-  padding: 0.25rem;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 1;
-  bottom: 110%;
-  left: 50%;
-  margin-left: -4.25rem; /* Use half of the width, to center the tooltip */
 }
 
-.tooltip:hover .tooltiptext {
-  visibility: visible;
+.modal-for-remove-book {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+  background-color: rgba(71, 78, 93, 0.4);
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto 15% auto;
+  border: 1px solid #684526;
+  border-radius: 1.5rem;
+  width: 75%;
+}
+
+.hidden {
+  display: none;
 }
 
 @media screen and (max-width: 890px) {
@@ -116,12 +141,5 @@
 
   .books-remove-button {
     margin-top: 1rem;
-  }
-
-  .tooltip .tooltiptext {
-    top: 110%;
-    /* bottom: 0%; */
-    left: 50%;
-    margin-left: -4.25rem; /* Use half of the width, to center the tooltip */
   }
 }
