@@ -1,12 +1,12 @@
 describe('Book Details page', () => {
   beforeEach(() => {
-    cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/1/books', {
-    // cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books', {
+    // cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/1/books', {
+    cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books', {
       statusCode: 200,
       fixture: 'books'
     }).as('getBooks')
-    cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries', {
-    // cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries', {
+    // cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries', {
+    cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries', {
       statusCode: 200,
       fixture: 'libraries'
     }).as('getLibraries')
@@ -43,8 +43,8 @@ describe('Book Details page', () => {
   })
 
   it('Displays a different error message if a server error occurs, and a button to return to Landing page', () => {
-    cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/1/books', {
-    // cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books', {
+    // cy.intercept('GET', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/1/books', {
+    cy.intercept('GET', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books', {
       statusCode: 500,
       body: {
         message: 'Internal Server Error'
@@ -63,17 +63,24 @@ describe('Book Details page', () => {
     cy.wait('@getBooks')
   })
 
-  it('User can click a button to remove this book from this library', () => {
-    cy.intercept('DELETE', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/1/books/1', {
-    // cy.intercept('DELETE', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books/1', {
+  it('User can click a button to remove this book from this library, and be prompted to confirm removal', () => {
+    // cy.intercept('DELETE', 'https://1a07a8ed-6e06-4bd9-9cba-6790e4268ca8.mock.pstmn.io/api/v0/libraries/1/books/1', {
+    cy.intercept('DELETE', 'https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books/1', {
       statusCode: 200,
       fixture: 'booksAfterSuccessfulDelete'
     }).as('booksAfterSuccessfulDelete')
-    
+  
     cy.get('.books-remove-button').click()
+      .get('.deletebtn').click()
     cy.url().should('eq', 'http://localhost:3000/libraries/1')
       .wait('@booksAfterSuccessfulDelete')
     cy.get('.books-section').children().should('have.length', 4)
+  })
+
+  it('User can click a button to remove this book from this library, and decide to cancel', () => {
+    cy.get('.books-remove-button').click()
+      .get('.cancelbtn').click()
+    cy.url().should('eq', 'http://localhost:3000/libraries/1/books/1')
   })
 
   it('User can click the displayed Header logo to return to the Landing page', () => {

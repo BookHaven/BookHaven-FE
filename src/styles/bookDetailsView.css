@@ -5,16 +5,32 @@
   margin: 4rem 10rem;
 }
 
+.books-top-container {
+  padding: 0.5rem;
+}
+
+.books-top-left {
+  display: flex;
+  justify-content: space-between;
+}
+
 .books-bottom-container {
   flex-direction: column;
+  padding: 1.5rem 3rem;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  border-radius: 1.5rem
+}
+
+.books-bottom-container > h3 {
+  margin-bottom: 0;
 }
 
 .books-details {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-width: 60%;
-  padding-left: 2rem;
+  padding-left: 3rem;
   text-align: left;
 }
 
@@ -26,6 +42,7 @@
 .books-image {
   height: 193px;
   width: 128px;
+  border-radius: 3px;
 }
 
 .books-title {
@@ -42,40 +59,142 @@
   margin: 0.5rem 0 0 0;
 }
 
+.books-desc {
+  line-height: 1.5;
+}
+
 .books-remove-button {
-  margin: 0.5rem;
   width: 10rem;
   height: 2rem;
-  background-color: white;
-  color: #684526;
   text-align: center;
   padding: 0.25rem;
-  border: 1px solid #684526;
   border-radius: 3px;
   cursor: pointer;
 }
 
-.tooltip {
-  position: relative;
-  display: inline-block;
-}
-
-.tooltip .tooltiptext {
-  visibility: hidden;
-  width: 8rem;
-  background-color: #684526;
+.books-remove-button:hover {
+  background-color: rgba(243, 153, 163, 1);
   color: white;
-  text-align: center;
-  padding: 0.25rem;
-  border: 1px solid #684526;
-  border-radius: 6px;
-  position: absolute;
-  z-index: 1;
-  bottom: 100%;
-  left: 50%;
-  margin-left: -4rem; /* Use half of the width, to center the tooltip */
+  border: 0;
 }
 
-.tooltip:hover .tooltiptext {
-  visibility: visible;
+/* Modal for Remove Book */
+
+.cancelbtn,
+.deletebtn {
+  height: 2.5rem;
+  margin: 0.5rem;
+  margin-top: 2rem;
+  font-size: medium;
+}
+
+.cancelbtn:hover {
+  background-color: rgba(104, 69, 38, .5);
+  color: white;
+}
+
+.deletebtn {
+  background-color: rgba(243, 153, 163, 0.65);
+}
+
+.deletebtn:hover {
+  background-color: rgba(243, 153, 163, 1);
+}
+
+.modal-text {
+  padding: 2rem;
+  text-align: center;
+}
+
+.modal-for-remove-book {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 50px;
+  background-color: rgba(71, 78, 93, 0.4);
+  overflow: auto;
+}
+
+.modal-content {
+  background-color: white;
+  margin: 5% auto 15% auto;
+  border: 1px solid #684526;
+  border-radius: 1.5rem;
+  width: 75%;
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (max-width: 1100px) {
+  .books-bottom-container,
+  .books-top-container {
+    margin-right: 6rem;
+    margin-left: 6rem;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .books-top-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .books-remove-button,
+  .books-bottom-container {
+    justify-self: center;
+    margin-top: 3rem;
+  }
+
+  .books-top-container {
+    justify-content: center;
+    margin-bottom: 3rem;
+  }
+
+  .books-details {
+    padding-left: 1.5rem;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 775px) {
+  .books-bottom-container,
+  .books-top-container {
+    margin-right: 4rem;
+    margin-left: 4rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .books-bottom-container,
+  .books-top-container {
+    margin-right: 2rem;
+    margin-left: 2rem;
+  }
+  
+  .books-bottom-container {
+    margin-top: 1.25rem;
+  }
+
+  .books-top-container {
+    margin-bottom: 1.25rem;
+  }
+  
+  .books-top-left {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .books-details {
+    padding-left: 0;
+  }
+
+  .books-image,
+  .books-remove-button {
+    margin-top: 1.25rem;
+  }
 }
