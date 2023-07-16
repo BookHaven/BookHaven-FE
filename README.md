@@ -2,7 +2,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-<!-- ## Readme-top -->
+
 <div align="center">
     <img src="https://github.com/ResidentMario/missingno/assets/105441393/1b76aa4d-80a8-400b-97fc-792e83bcc2ce" alt="Logo" width="700" height="175">
   </a>
@@ -65,7 +65,6 @@ Check out our back end repository: [![Github][Github]][project-be-gh-url]
 [![GitHub Actions][githubactions-badge]][githubactions-url]
 [![Cypress][cypress-badge]][cypress-url] 
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- Screenshots -->
@@ -97,7 +96,6 @@ Or, check the existing test workflows under the `Actions` tab of the GitHub repo
 
 ![Screenshot 2023-07-16 at 2 52 08 PM](https://github.com/BookHaven/BookHaven-FE/assets/121128718/406ce90c-150d-4dd0-8118-9569f6128645)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Learning Goals
 - Demonstrate knowledge of front-end technologies, including React, TypeScript, Redux Toolkit, React Router, HTML, and CSS.
@@ -121,7 +119,6 @@ Or, check the existing test workflows under the `Actions` tab of the GitHub repo
 - Having only two front-end members for the front-end team versus four members on back-end
 - Implenting multiple new concepts simultaneously
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- CONTRIBUTORS -->
@@ -149,7 +146,6 @@ Or, check the existing test workflows under the `Actions` tab of the GitHub repo
 </br>
 </br>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <div align="center">
