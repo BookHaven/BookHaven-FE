@@ -58,7 +58,10 @@ describe('Library Index page', () => {
     cy.get('.error-message').should('have.text', 'We seem to be having technical issues. Please try again later.')
   })
 
-  it.skip('User can click the Header logo to return to the Landing page', () => {
-    // TO DO: After styling, finish assertion
+  it('User can click the displayed Header logo to return to the Landing page', () => {
+    cy.get('.bookhaven-logo').should('have.attr', 'src', '/bookhaven_logo.png')
+      .should('have.attr', 'alt', 'BookHaven logo')
+      .click()
+    cy.url().should('eq', 'http://localhost:3000/')
   })
 })

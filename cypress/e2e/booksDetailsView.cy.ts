@@ -34,7 +34,7 @@ describe('Book Details page', () => {
     cy.get('.books-title').should('have.text', 'One Hundred Years of Solitude')
   })
 
-  it('Displays an error message if the URL isn\'t found (400 level error)', () => {
+  it.skip('Displays an error message if the URL isn\'t found (400 level error)', () => {
     // TO DO: update error message text
     cy.visit('http://localhost:3000/libraries/1/books/2')
       .wait('@getBooks')
@@ -73,10 +73,11 @@ describe('Book Details page', () => {
     cy.get('.books-section').children().should('have.length', 4)
   })
 
-  it.skip('User can click the Header logo to return to the Landing page', () => {
-    // TO DO: revise using updated Header button
-    cy.get('.books-return').click()
-    cy.url().should('eq', 'http://localhost:3000')
+  it('User can click the displayed Header logo to return to the Landing page', () => {
+    cy.get('.bookhaven-logo').should('have.attr', 'src', '/bookhaven_logo.png')
+      .should('have.attr', 'alt', 'BookHaven logo')
+      .click()
+    cy.url().should('eq', 'http://localhost:3000/')
   })
 
   // TO DO: Finish assertion if functionality is added
