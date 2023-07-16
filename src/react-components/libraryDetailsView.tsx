@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../redux/store';
 import { fetchBooks } from '../redux/books';
 import { NavLink } from 'react-router-dom';
@@ -51,8 +51,8 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
       {!books.loading && books.books.length && !errorProp ? (
         <section className="books-section">
           {books.books.map(book=> (
-            <NavLink to={`/libraries/${currentLibraryId}/books/${book.id}`}>
-              <img src={book.attributes.book_image} alt="Book cover" key={book.id} className="book"/>
+            <NavLink to={`/libraries/${currentLibraryId}/books/${book.id}`} key={book.id}>
+              <img src={book.attributes.book_image} alt="Book cover" className="book"/>
             </NavLink>
           ))}
         </section>
