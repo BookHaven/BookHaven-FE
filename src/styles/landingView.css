@@ -1,3 +1,32 @@
+@media (max-width: 767px) {
+  .library-image {
+    z-index: -2;
+  }
+
+  .landing-text {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .library-image {
+    height: 90%;
+    min-height: 500px;
+    width: 55%;
+    min-width: 300px;
+    bottom: 0px;
+    position: fixed;
+    right: 0;
+    margin-right: 40px;
+    z-index: 2;
+  }
+
+  .landing-text {
+    width: 35%;
+  }
+}
+
+
 body {
   background: #E4FCFF;
   background-size: cover;
@@ -26,7 +55,6 @@ body {
 .landing-text {
   display: flex;
   flex-direction: column;
-  width: 35%;
   justify-content: center;
 }
 
@@ -39,17 +67,5 @@ body {
 .landing-button:hover {
   background-color: rgb(254, 225, 171);
   cursor: pointer;
-}
-
-.library-image {
-  height: 90%;
-  min-height: 500px;
-  width: 55%;
-  min-width: 300px;
-  bottom: 0px;
-  position: fixed;
-  right: 0;
-  margin-right: 40px;
-  z-index: 2;
 }
 
