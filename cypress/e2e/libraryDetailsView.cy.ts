@@ -17,7 +17,15 @@ describe('Library Details page', () => {
     it('should go to url ending with "/libraries/1"', () => {
         cy.url().should('eq', 'http://localhost:3000/libraries/1')
     })
+
+    it('should display the Book Haven logo ', () => {
+        cy.get('.bookhaven-logo').should('be.visible')
     
+    it('should return to library index page when button is clicked', () => {
+        cy.get('.return-to-libraries-btn').click()
+        cy.url().should('eq', 'http://localhost:3000/libraries')
+    })
+
     it('should display an error message when books cannot be fetched', () => {
         cy.visit('http://localhost:3000/libraries/1')
         .then(() => {
@@ -49,8 +57,39 @@ describe('Library Details page', () => {
         .url().should('eq', 'http://localhost:3000/libraries/1/books/1')
     })
     
-    it('should display an add book button which takes users to a form page', () => {
-        cy.get('.libraryDetailsPage').find('.addBookBtn').click()
-        cy.url().should('eq', 'http://localhost:3000/libraries/1/form')
+    it('should display an add book button which displays a form on the page', () => {
+        cy.get('.library-details-page').find('.addBookBtn').click()
+        cy.get('.form-page').should('be.visible')
+    })
+
+    it('should have a form that instructs users to add a book', () => {
+        cy.get('.library-details-page').find('.addBookBtn').click()
+        cy.get('.form-page').contains("h2", "Add a book to this library");
+    })
+
+    it('should have an input field that takes in an ISBN when form is visible', () => {
+        cy.get('.library-details-page').find('.addBookBtn').click()
+        cy.get('input[name="isbn"]').should('be.visible'); 
+        cy.get('input[name="isbn"]').should('have.attr', 'placeholder', 'Enter ISBN');
+        
+        cy.get('input[name="isbn"]').type('12345')
+        cy.get('input[name="isbn"]').should('have.value', '12345')
+    })
+
+    it('should post a new book on the DOM', () => {
+        cy.intercept("POST", "https://book-haven-be-29aa9bd8a3c7.herokuapp.com/api/v0/libraries/1/books", {
+          statusCode: 201,
+          body: { 
+            isbn: "12345"
+          }
+        })
+        
+        cy.get('input[name=isbn]')
+            .type("12345")
+    
+          .get('form').find('.add-book-btn').click()
+          .then(() => {
+            cy.get('.books-section').find('.book').should('have.length', 6);
+          });
     })
 })

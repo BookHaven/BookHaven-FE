@@ -30,7 +30,7 @@ export const FormView = ({ currentLibraryId }: FormViewProps) => {
     const handleClick = (event: any) => {
       event.preventDefault();
       dispatch(postBook(parameterObject));
-      history.push(`/libraries/${currentLibraryId}`);
+      // history.push(`/libraries/${currentLibraryId}`);
     }
 
     // const returnToBooks = () => {

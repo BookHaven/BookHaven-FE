@@ -36,9 +36,7 @@ export const LibraryDetailsView = ({ currentLibraryId }: LibraryDetailsViewProps
           <button className="hide-form-btn" onClick={hideForm}>Hide form</button>
           <FormView currentLibraryId={currentLibraryId} />
         </section>
-        ) : (
-        <button className="addBookBtn" onClick={displayForm}>Add a Book</button>
-      )}
+      ) : <button className="addBookBtn" onClick={displayForm}>Add a Book</button>}
       {!books.loading && books.books.length ? (
         <section className="books-section">
           {books.books.map(book=> (
